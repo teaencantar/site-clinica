@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deixe seu depoimento — TEA Encantar</title>
+  <meta name="description" content="Conte sua experiência com a TEA Encantar. Seu depoimento ajuda outras famílias." />
+  <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#7B3FA0" />
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <link rel="apple-touch-icon" href="assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Poppins:wght@500;600;700;800&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a href="#form" class="skip-link">Pular para o formulário</a>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo" aria-label="TEA Encantar — voltar ao site">
+        <img src="assets/logo.png" alt="TEA Encantar" class="logo__img" />
+      </a>
+      <nav class="nav nav--simple" aria-label="Navegação">
+        <a href="index.html">← Voltar ao site</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="form-page" id="form">
+    <div class="form-hero__bg" aria-hidden="true"><span class="blob blob--1"></span><span class="blob blob--2"></span></div>
+    <div class="container form-wrap">
+      <div class="form-intro">
+        <p class="hero__eyebrow">Sua experiência importa</p>
+        <h1>Deixe seu <span class="grad-text">depoimento</span></h1>
+        <p class="script-accent">Sua história ajuda outras famílias 💜</p>
+        <p class="form-lead">Conte pra gente como foi a sua experiência na TEA Encantar. Leva menos de 2 minutos.</p>
+      </div>
+
+      <form class="depo-form" id="depoForm" novalidate>
+        <!-- honeypot anti-spam (não preencher) -->
+        <input type="text" name="website" id="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+        <div class="field-row">
+          <label class="field">Nome <span class="req">*</span>
+            <input type="text" id="nome" name="nome" required maxlength="60" placeholder="Seu nome" autocomplete="given-name" />
+          </label>
+          <label class="field">Sobrenome
+            <input type="text" id="sobrenome" name="sobrenome" maxlength="60" placeholder="Seu sobrenome" autocomplete="family-name" />
+          </label>
+        </div>
+
+        <label class="field">Seu depoimento <span class="req">*</span>
+          <textarea id="comentario" name="comentario" rows="5" required maxlength="600" placeholder="Conte como foi sua experiência com a clínica..."></textarea>
+          <small class="hint"><span id="charcount">0</span>/600</small>
+        </label>
+
+        <label class="field">Sua foto <span class="req">*</span>
+          <input type="file" id="foto" name="foto" accept="image/*" required />
+          <small class="hint">Uma foto sua ou da família (JPG ou PNG, até 5 MB).</small>
+        </label>
+        <div class="foto-preview" id="fotoPreview" hidden><img id="fotoPreviewImg" alt="Pré-visualização da foto" /></div>
+
+        <label class="check">
+          <input type="checkbox" id="autorizacao" name="autorizacao" required />
+          <span>Autorizo a <strong>TEA Encantar</strong> a publicar meu depoimento, nome e foto no site e nas redes sociais. <span class="req">*</span></span>
+        </label>
+
+        <button type="submit" class="btn btn--lg" id="submitBtn">
+          <i data-lucide="send" aria-hidden="true"></i> Enviar depoimento
+        </button>
+
+        <p class="form-msg" id="formMsg" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="form-success" id="formSuccess" hidden>
+        <div class="form-success__icon"><i data-lucide="heart-handshake" aria-hidden="true"></i></div>
+        <h2>Obrigado de coração! 💜</h2>
+        <p>Recebemos seu depoimento. Em breve ele poderá aparecer no nosso site. Você fez o dia de outras famílias mais leve.</p>
+        <a href="index.html" class="btn">Voltar ao site</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__bottom" style="border:0;margin:0;padding:0;">© <span id="year"></span> TEA Encantar • Tudo num só lugar!</div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="depoimento.js"></script>
+</body>
+</html>
