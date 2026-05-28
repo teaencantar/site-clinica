@@ -139,9 +139,9 @@ img { max-width: 100%; }
 .section { padding: 84px 0; position: relative; }
 .section--soft { background: var(--bg-soft); }
 .section--purple { background: var(--grad-cta); color: #fff; }
-.section--purple h2 { color: #fff; }
-.section--purple p { color: rgba(255,255,255,.92); }
-.section--purple .section__eyebrow { background: #fff; color: var(--roxo); }
+.section.section--purple h2 { color: #fff; }
+.section.section--purple p { color: rgba(255,255,255,.94); }
+.section.section--purple .section__eyebrow { background: #fff; color: var(--roxo); }
 .section__head { text-align: center; margin-bottom: 48px; }
 .section h2 { font-size: clamp(1.9rem, 3.6vw, 2.7rem); }
 .section__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 54px; align-items: center; }
