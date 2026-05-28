@@ -9,65 +9,82 @@
   <meta property="og:description" content="Centro de reabilitação multidisciplinar acolhedor, em Ramos - RJ. Agende sua avaliação pelo WhatsApp." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://teaencantar.github.io/site-clinica/assets/logo.png" />
+  <meta name="theme-color" content="#7B3FA0" />
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
   <link rel="icon" type="image/png" sizes="256x256" href="assets/favicon.png" />
   <link rel="apple-touch-icon" href="assets/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <a href="#inicio" class="skip-link">Pular para o conteúdo</a>
+
   <!-- Cabeçalho -->
   <header class="header">
     <div class="container header__inner">
-      <a href="#inicio" class="logo" aria-label="TEA Encantar">
+      <a href="#inicio" class="logo" aria-label="TEA Encantar — página inicial">
         <img src="assets/logo.png" alt="TEA Encantar — Espaço Multidisciplinar e Reabilitação" class="logo__img" />
       </a>
-      <nav class="nav" id="nav">
+      <nav class="nav" id="nav" aria-label="Navegação principal">
         <a href="#sobre">Sobre</a>
         <a href="#servicos">Terapias</a>
         <a href="#estrutura">Estrutura</a>
         <a href="#convenios">Convênios</a>
         <a href="#contato">Contato</a>
-        <a href="https://wa.me/5521994835421" class="btn btn--small btn--whatsapp" target="_blank" rel="noopener">Agendar</a>
+        <a href="https://wa.me/5521994835421" class="btn btn--small btn--whatsapp" target="_blank" rel="noopener">
+          <i data-lucide="message-circle" aria-hidden="true"></i> Agendar
+        </a>
       </nav>
-      <button class="nav__toggle" id="navToggle" aria-label="Abrir menu">☰</button>
+      <button class="nav__toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+        <i data-lucide="menu" aria-hidden="true"></i>
+      </button>
     </div>
   </header>
 
   <!-- Hero -->
   <section class="hero" id="inicio">
+    <div class="hero__bg" aria-hidden="true">
+      <span class="blob blob--1"></span>
+      <span class="blob blob--2"></span>
+      <span class="leaf leaf--a"></span>
+      <span class="leaf leaf--b"></span>
+      <span class="leaf leaf--c"></span>
+      <span class="leaf leaf--d"></span>
+    </div>
     <div class="container hero__inner">
       <div class="hero__content">
-        <p class="hero__eyebrow">Espaço Multidisciplinar e Reabilitação</p>
-        <h1>Tudo num <span class="grad-text">só lugar!</span></h1>
-        <p class="hero__lead">
+        <p class="hero__eyebrow reveal">Espaço Multidisciplinar e Reabilitação</p>
+        <h1 class="reveal">Tudo num <span class="grad-text">só lugar!</span></h1>
+        <p class="hero__lead reveal">
           Equipe multidisciplinar para acompanhar pessoas dentro do espectro
           autista (TEA), com foco também em síndrome de Down e paralisia cerebral.
-          Corpo, mente e emoções em movimento. 💛
+          <strong>Corpo, mente e emoções em movimento.</strong>
         </p>
-        <div class="badges">
+        <div class="badges reveal">
           <span class="badge">Infantil</span>
           <span class="badge">Adulto</span>
           <span class="badge">Idoso</span>
         </div>
-        <div class="hero__actions">
-          <a href="https://wa.me/5521994835421" class="btn btn--whatsapp" target="_blank" rel="noopener">
-            💬 Agende sua avaliação
+        <div class="hero__actions reveal">
+          <a href="https://wa.me/5521994835421" class="btn btn--whatsapp btn--lg" target="_blank" rel="noopener">
+            <i data-lucide="message-circle" aria-hidden="true"></i> Agende sua avaliação
           </a>
-          <a href="#servicos" class="btn btn--ghost">Ver terapias</a>
+          <a href="#servicos" class="btn btn--ghost btn--lg">Ver terapias</a>
         </div>
       </div>
-      <aside class="hero__card">
-        <h3>Atendimento acolhedor</h3>
+      <aside class="hero__card reveal">
+        <h2 class="hero__card-title">Atendimento acolhedor</h2>
         <ul class="hero__list">
-          <li>🧩 Equipe multidisciplinar completa</li>
-          <li>🌊 Piscina para hidroterapia</li>
-          <li>🤸 Academia de psicomotricidade</li>
-          <li>💳 Aceitamos diversos convênios</li>
+          <li><i data-lucide="puzzle" aria-hidden="true"></i> Equipe multidisciplinar completa</li>
+          <li><i data-lucide="waves" aria-hidden="true"></i> Piscina para hidroterapia</li>
+          <li><i data-lucide="dumbbell" aria-hidden="true"></i> Academia de psicomotricidade</li>
+          <li><i data-lucide="credit-card" aria-hidden="true"></i> Aceitamos diversos convênios</li>
         </ul>
-        <a href="https://www.instagram.com/teaencantar/" class="hero__insta" target="_blank" rel="noopener">📷 @teaencantar</a>
+        <a href="https://www.instagram.com/teaencantar/" class="hero__insta" target="_blank" rel="noopener">
+          <svg class="lucide" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg> @teaencantar
+        </a>
       </aside>
     </div>
     <div class="wave wave--bottom" aria-hidden="true"></div>
@@ -76,7 +93,7 @@
   <!-- Sobre -->
   <section class="section" id="sobre">
     <div class="container section__grid">
-      <div>
+      <div class="reveal">
         <p class="section__eyebrow">Sobre nós</p>
         <h2>Um espaço feito para <span class="grad-text">acolher</span></h2>
         <p>
@@ -92,7 +109,7 @@
           <li>Para todas as idades</li>
         </ul>
       </div>
-      <div class="keywords">
+      <div class="keywords reveal" aria-hidden="true">
         <span>espectro</span><span>multidisciplinar</span><span>reabilitação</span>
         <span>desenvolvimento</span><span>liberdade</span><span>autoconfiança</span>
         <span>bem-estar</span><span>inclusão</span><span>acolhimento</span>
@@ -103,25 +120,25 @@
   <!-- Serviços / Terapias -->
   <section class="section section--soft" id="servicos">
     <div class="container">
-      <div class="section__head">
+      <div class="section__head reveal">
         <p class="section__eyebrow">Nossas terapias</p>
         <h2>Especialidades <span class="grad-text">para cada necessidade</span></h2>
       </div>
-      <div class="cards">
-        <article class="card"><div class="card__icon">🤸</div><h3>Psicomotricidade</h3></article>
-        <article class="card"><div class="card__icon">🧠</div><h3>Neuropsicologia</h3></article>
-        <article class="card"><div class="card__icon">🌈</div><h3>Terapia sensorial</h3></article>
-        <article class="card"><div class="card__icon">🗣️</div><h3>Fonoaudiologia</h3></article>
-        <article class="card"><div class="card__icon">💭</div><h3>Psicologia</h3></article>
-        <article class="card"><div class="card__icon">🎵</div><h3>Musicoterapia</h3></article>
-        <article class="card"><div class="card__icon">🥗</div><h3>Nutrição</h3></article>
-        <article class="card"><div class="card__icon">📚</div><h3>Psicopedagogia</h3></article>
-        <article class="card"><div class="card__icon">💪</div><h3>Fisioterapia</h3></article>
-        <article class="card"><div class="card__icon">🧩</div><h3>Terapia ocupacional</h3></article>
-        <article class="card"><div class="card__icon">🌊</div><h3>Hidroterapia / Terapia na água</h3></article>
-        <article class="card"><div class="card__icon">🍎</div><h3>Seletividade alimentar</h3></article>
-        <article class="card"><div class="card__icon">📋</div><h3>Avaliação neuropsicológica</h3></article>
-        <article class="card"><div class="card__icon">🏊</div><h3>Aulas de natação</h3></article>
+      <div class="cards reveal-group">
+        <article class="card reveal"><div class="card__icon"><i data-lucide="activity" aria-hidden="true"></i></div><h3>Psicomotricidade</h3></article>
+        <article class="card reveal"><div class="card__icon"><i data-lucide="brain" aria-hidden="true"></i></div><h3>Neuropsicologia</h3></article>
+        <article class="card reveal"><div class="card__icon"><i data-lucide="sparkles" aria-hidden="true"></i></div><h3>Terapia sensorial</h3></article>
+        <article class="card reveal"><div class="card__icon"><i data-lucide="ear" aria-hidden="true"></i></div><h3>Fonoaudiologia</h3></article>
+        <article class="card reveal"><div class="card__icon"><i data-lucide="smile" aria-hidden="true"></i></div><h3>Psicologia</h3></article>
+        <article class="card reveal"><div class="card__icon"><i data-lucide="music" aria-hidden="true"></i></div><h3>Musicoterapia</h3></article>
+        <article class="card reveal"><div class="card__icon"><i data-lucide="apple" aria-hidden="true"></i></div><h3>Nutrição</h3></article>
+        <article class="card reveal"><div class="card__icon"><i data-lucide="book-open" aria-hidden="true"></i></div><h3>Psicopedagogia</h3></article>
+        <article class="card reveal"><div class="card__icon"><i data-lucide="dumbbell" aria-hidden="true"></i></div><h3>Fisioterapia</h3></article>
+        <article class="card reveal"><div class="card__icon"><i data-lucide="puzzle" aria-hidden="true"></i></div><h3>Terapia ocupacional</h3></article>
+        <article class="card reveal"><div class="card__icon"><i data-lucide="waves" aria-hidden="true"></i></div><h3>Hidroterapia / Terapia na água</h3></article>
+        <article class="card reveal"><div class="card__icon"><i data-lucide="utensils" aria-hidden="true"></i></div><h3>Seletividade alimentar</h3></article>
+        <article class="card reveal"><div class="card__icon"><i data-lucide="clipboard-list" aria-hidden="true"></i></div><h3>Avaliação neuropsicológica</h3></article>
+        <article class="card reveal"><div class="card__icon"><i data-lucide="droplets" aria-hidden="true"></i></div><h3>Aulas de natação</h3></article>
       </div>
     </div>
   </section>
@@ -129,17 +146,17 @@
   <!-- Diferenciais / Estrutura -->
   <section class="section" id="estrutura">
     <div class="container">
-      <div class="section__head">
+      <div class="section__head reveal">
         <p class="section__eyebrow">Por que a TEA Encantar</p>
         <h2>Nossos <span class="grad-text">diferenciais</span></h2>
       </div>
-      <div class="features">
-        <div class="feature"><span class="feature__ico">👥</span><div><h3>Equipe completa</h3><p>Todas as especialidades multidisciplinares em um único espaço.</p></div></div>
-        <div class="feature"><span class="feature__ico">👶</span><div><h3>Todas as idades</h3><p>Atendimento infantil, adulto e idoso.</p></div></div>
-        <div class="feature"><span class="feature__ico">🌊</span><div><h3>Piscina aquecida</h3><p>Estrutura própria para hidroterapia e terapia na água.</p></div></div>
-        <div class="feature"><span class="feature__ico">🏋️</span><div><h3>Academia de psicomotricidade</h3><p>Ambiente preparado para o desenvolvimento motor.</p></div></div>
-        <div class="feature"><span class="feature__ico">💳</span><div><h3>Diversos convênios</h3><p>Facilidade de acesso ao tratamento que você precisa.</p></div></div>
-        <div class="feature"><span class="feature__ico">💛</span><div><h3>Acolhimento</h3><p>Ambiente lúdico, respeitoso e inclusivo com a neurodiversidade.</p></div></div>
+      <div class="features reveal-group">
+        <div class="feature reveal"><span class="feature__ico"><i data-lucide="users" aria-hidden="true"></i></span><div><h3>Equipe completa</h3><p>Todas as especialidades multidisciplinares em um único espaço.</p></div></div>
+        <div class="feature reveal"><span class="feature__ico"><i data-lucide="baby" aria-hidden="true"></i></span><div><h3>Todas as idades</h3><p>Atendimento infantil, adulto e idoso.</p></div></div>
+        <div class="feature reveal"><span class="feature__ico"><i data-lucide="waves" aria-hidden="true"></i></span><div><h3>Piscina aquecida</h3><p>Estrutura própria para hidroterapia e terapia na água.</p></div></div>
+        <div class="feature reveal"><span class="feature__ico"><i data-lucide="dumbbell" aria-hidden="true"></i></span><div><h3>Academia de psicomotricidade</h3><p>Ambiente preparado para o desenvolvimento motor.</p></div></div>
+        <div class="feature reveal"><span class="feature__ico"><i data-lucide="credit-card" aria-hidden="true"></i></span><div><h3>Diversos convênios</h3><p>Facilidade de acesso ao tratamento que você precisa.</p></div></div>
+        <div class="feature reveal"><span class="feature__ico"><i data-lucide="heart" aria-hidden="true"></i></span><div><h3>Acolhimento</h3><p>Ambiente lúdico, respeitoso e inclusivo com a neurodiversidade.</p></div></div>
       </div>
     </div>
   </section>
@@ -147,11 +164,11 @@
   <!-- Convênios -->
   <section class="section section--soft" id="convenios">
     <div class="container">
-      <div class="section__head">
+      <div class="section__head reveal">
         <p class="section__eyebrow">Atendimento facilitado</p>
         <h2>Convênios <span class="grad-text">aceitos</span></h2>
       </div>
-      <div class="chips">
+      <div class="chips reveal">
         <span class="chip">AMEX Saúde</span>
         <span class="chip">CASSI</span>
         <span class="chip">Bradesco Saúde</span>
@@ -163,44 +180,46 @@
         <span class="chip">Assim Saúde</span>
         <span class="chip">Leve Saúde</span>
       </div>
-      <p class="note">ℹ️ <strong>Amil:</strong> atende somente casos de TEA, síndrome de Down e paralisia cerebral.</p>
+      <p class="note reveal"><i data-lucide="info" aria-hidden="true"></i> <strong>Amil:</strong> atende somente casos de TEA, síndrome de Down e paralisia cerebral.</p>
     </div>
   </section>
 
-  <!-- Depoimentos (exemplos — substituir por reais) -->
+  <!-- Depoimentos -->
   <section class="section" id="depoimentos">
     <div class="container">
-      <div class="section__head">
+      <div class="section__head reveal">
         <p class="section__eyebrow">Quem confia na gente</p>
         <h2>Histórias de <span class="grad-text">desenvolvimento</span></h2>
       </div>
-      <div class="cards cards--3">
-        <article class="quote"><p>"Encontramos num só lugar tudo o que nosso filho precisava. A evolução dele nos emociona todos os dias."</p><span>— Família atendida</span></article>
-        <article class="quote"><p>"Equipe acolhedora e preparada. A hidroterapia fez toda a diferença no nosso tratamento."</p><span>— Família atendida</span></article>
-        <article class="quote"><p>"Atendimento humano e respeitoso. Recomendo de olhos fechados."</p><span>— Família atendida</span></article>
+      <div class="cards cards--3 reveal-group">
+        <article class="quote reveal"><i data-lucide="quote" class="quote__mark" aria-hidden="true"></i><p>Encontramos num só lugar tudo o que nosso filho precisava. A evolução dele nos emociona todos os dias.</p><span>— Família atendida</span></article>
+        <article class="quote reveal"><i data-lucide="quote" class="quote__mark" aria-hidden="true"></i><p>Equipe acolhedora e preparada. A hidroterapia fez toda a diferença no nosso tratamento.</p><span>— Família atendida</span></article>
+        <article class="quote reveal"><i data-lucide="quote" class="quote__mark" aria-hidden="true"></i><p>Atendimento humano e respeitoso. Recomendo de olhos fechados.</p><span>— Família atendida</span></article>
       </div>
-      <p class="note">✏️ Depoimentos de exemplo — me envie depoimentos reais para substituir.</p>
+      <p class="note reveal"><i data-lucide="pencil" aria-hidden="true"></i> Depoimentos de exemplo — me envie depoimentos reais para substituir.</p>
     </div>
   </section>
 
   <!-- Localização -->
   <section class="section section--soft" id="localizacao">
     <div class="container section__grid">
-      <div>
+      <div class="reveal">
         <p class="section__eyebrow">Onde estamos</p>
         <h2>Venha nos <span class="grad-text">visitar</span></h2>
         <ul class="contact-list">
-          <li><strong>📍 Endereço:</strong> Rua André Pinto, 24 — Ramos</li>
-          <li><strong>🚉 Referência:</strong> Próximo à estação de trem de Ramos</li>
-          <li><strong>🏙️ Cidade:</strong> Rio de Janeiro - RJ</li>
+          <li><i data-lucide="map-pin" aria-hidden="true"></i><span><strong>Endereço</strong><br>Rua André Pinto, 24 — Ramos</span></li>
+          <li><i data-lucide="train-front" aria-hidden="true"></i><span><strong>Referência</strong><br>Próximo à estação de trem de Ramos</span></li>
+          <li><i data-lucide="building-2" aria-hidden="true"></i><span><strong>Cidade</strong><br>Rio de Janeiro - RJ</span></li>
         </ul>
-        <a href="https://wa.me/5521994835421" class="btn btn--whatsapp" target="_blank" rel="noopener">💬 Falar pelo WhatsApp</a>
+        <a href="https://wa.me/5521994835421" class="btn btn--whatsapp" target="_blank" rel="noopener">
+          <i data-lucide="message-circle" aria-hidden="true"></i> Falar pelo WhatsApp
+        </a>
       </div>
-      <div class="map">
+      <div class="map reveal">
         <iframe
-          title="Mapa - TEA Encantar"
+          title="Mapa - TEA Encantar, Rua André Pinto, 24, Ramos"
           src="https://www.google.com/maps?q=Rua%20Andr%C3%A9%20Pinto%2C%2024%20-%20Ramos%2C%20Rio%20de%20Janeiro%20-%20RJ&output=embed"
-          width="100%" height="320" style="border:0;" loading="lazy"
+          width="100%" height="340" style="border:0;" loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
@@ -208,19 +227,22 @@
 
   <!-- Contato -->
   <section class="section" id="contato">
-    <div class="container contato">
+    <div class="container contato reveal">
       <p class="section__eyebrow">Fale com a gente</p>
       <h2>Agende sua avaliação pelo <span class="grad-text">WhatsApp</span></h2>
-      <p>Estamos prontos para acolher você e sua família. É só chamar! 💛</p>
+      <p>Estamos prontos para acolher você e sua família. É só chamar!</p>
       <div class="contato__channels">
         <a href="https://wa.me/5521994835421" class="channel" target="_blank" rel="noopener">
-          <span>💬</span><strong>WhatsApp</strong><small>+55 21 99483-5421</small>
+          <span class="channel__ico channel__ico--wpp"><i data-lucide="message-circle" aria-hidden="true"></i></span>
+          <strong>WhatsApp</strong><small>+55 21 99483-5421</small>
         </a>
         <a href="https://www.instagram.com/teaencantar/" class="channel" target="_blank" rel="noopener">
-          <span>📷</span><strong>Instagram</strong><small>@teaencantar</small>
+          <span class="channel__ico channel__ico--ig"><svg class="lucide" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></span>
+          <strong>Instagram</strong><small>@teaencantar</small>
         </a>
         <a href="https://www.threads.net/@teaencantar" class="channel" target="_blank" rel="noopener">
-          <span>🧵</span><strong>Threads</strong><small>@teaencantar</small>
+          <span class="channel__ico channel__ico--th"><i data-lucide="at-sign" aria-hidden="true"></i></span>
+          <strong>Threads</strong><small>@teaencantar</small>
         </a>
       </div>
     </div>
@@ -230,27 +252,25 @@
   <footer class="footer">
     <div class="container footer__inner">
       <div>
-        <span class="logo__text logo__text--footer"><span class="logo__tea">TEA</span><span class="logo__enc">encantar</span></span>
+        <img src="assets/logo-branco.png" alt="TEA Encantar" class="footer__logo" onerror="this.style.display='none';document.getElementById('footerTextLogo').style.display='inline-flex';" />
+        <span class="logo__text logo__text--footer" id="footerTextLogo"><span class="logo__tea">TEA</span><span class="logo__enc">encantar</span></span>
         <p>Espaço Multidisciplinar e Reabilitação</p>
         <p>Rua André Pinto, 24 — Ramos, Rio de Janeiro - RJ</p>
       </div>
-      <div class="footer__links">
+      <nav class="footer__links" aria-label="Links do rodapé">
         <a href="https://wa.me/5521994835421" target="_blank" rel="noopener">WhatsApp</a>
         <a href="https://www.instagram.com/teaencantar/" target="_blank" rel="noopener">Instagram</a>
         <a href="#inicio">Topo da página</a>
-      </div>
+      </nav>
       <span class="footer__copy">© <span id="year"></span> TEA Encantar • Tudo num só lugar!</span>
     </div>
   </footer>
 
-  <a href="https://wa.me/5521994835421" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+  <a href="https://wa.me/5521994835421" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+    <i data-lucide="message-circle" aria-hidden="true"></i>
+  </a>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const toggle = document.getElementById('navToggle');
-    const nav = document.getElementById('nav');
-    toggle.addEventListener('click', () => nav.classList.toggle('nav--open'));
-    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('nav--open')));
-  </script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="app.js"></script>
 </body>
 </html>
