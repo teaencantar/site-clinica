@@ -3,27 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sua Clínica — Cuidado e bem-estar</title>
-  <meta name="description" content="Clínica dedicada ao seu cuidado e bem-estar. Agende sua consulta." />
+  <title>TEA Encantar — Espaço Multidisciplinar e Reabilitação | Ramos - RJ</title>
+  <meta name="description" content="TEA Encantar: equipe multidisciplinar para acompanhar pessoas dentro do espectro autista, síndrome de Down e paralisia cerebral. Todas as terapias num só lugar, em Ramos - RJ." />
+  <meta property="og:title" content="TEA Encantar — Tudo num só lugar!" />
+  <meta property="og:description" content="Centro de reabilitação multidisciplinar acolhedor, em Ramos - RJ. Agende sua avaliação pelo WhatsApp." />
+  <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <!-- Cabeçalho -->
   <header class="header">
     <div class="container header__inner">
-      <a href="#inicio" class="logo">
-        <span class="logo__mark">+</span>
-        <span class="logo__text">Sua Clínica</span>
+      <!-- LOGO: trocar por <img src="logo.png" ...> quando a marca chegar -->
+      <a href="#inicio" class="logo" aria-label="TEA Encantar">
+        <span class="logo__tree">🌳</span>
+        <span class="logo__text"><span class="logo__tea">TEA</span><span class="logo__enc">encantar</span></span>
       </a>
       <nav class="nav" id="nav">
         <a href="#sobre">Sobre</a>
-        <a href="#servicos">Serviços</a>
-        <a href="#equipe">Equipe</a>
+        <a href="#servicos">Terapias</a>
+        <a href="#estrutura">Estrutura</a>
+        <a href="#convenios">Convênios</a>
         <a href="#contato">Contato</a>
-        <a href="#contato" class="btn btn--small">Agendar</a>
+        <a href="https://wa.me/5521994835421" class="btn btn--small btn--whatsapp" target="_blank" rel="noopener">Agendar</a>
       </nav>
       <button class="nav__toggle" id="navToggle" aria-label="Abrir menu">☰</button>
     </div>
@@ -33,29 +38,37 @@
   <section class="hero" id="inicio">
     <div class="container hero__inner">
       <div class="hero__content">
-        <p class="hero__eyebrow">Cuidado de verdade, perto de você</p>
-        <h1>Sua saúde e bem-estar em boas mãos</h1>
+        <p class="hero__eyebrow">Espaço Multidisciplinar e Reabilitação</p>
+        <h1>Tudo num <span class="grad-text">só lugar!</span></h1>
         <p class="hero__lead">
-          Atendimento humanizado, profissionais experientes e estrutura
-          moderna para cuidar de você e da sua família.
+          Equipe multidisciplinar para acompanhar pessoas dentro do espectro
+          autista (TEA), com foco também em síndrome de Down e paralisia cerebral.
+          Corpo, mente e emoções em movimento. 💛
         </p>
+        <div class="badges">
+          <span class="badge">Infantil</span>
+          <span class="badge">Adulto</span>
+          <span class="badge">Idoso</span>
+        </div>
         <div class="hero__actions">
-          <a href="#contato" class="btn">Agendar consulta</a>
-          <a href="#servicos" class="btn btn--ghost">Ver serviços</a>
+          <a href="https://wa.me/5521994835421" class="btn btn--whatsapp" target="_blank" rel="noopener">
+            💬 Agende sua avaliação
+          </a>
+          <a href="#servicos" class="btn btn--ghost">Ver terapias</a>
         </div>
       </div>
-      <div class="hero__card">
-        <h3>Horário de atendimento</h3>
-        <ul class="hours">
-          <li><span>Segunda a Sexta</span><strong>08h – 19h</strong></li>
-          <li><span>Sábado</span><strong>08h – 13h</strong></li>
-          <li><span>Domingo</span><strong>Fechado</strong></li>
+      <aside class="hero__card">
+        <h3>Atendimento acolhedor</h3>
+        <ul class="hero__list">
+          <li>🧩 Equipe multidisciplinar completa</li>
+          <li>🌊 Piscina para hidroterapia</li>
+          <li>🤸 Academia de psicomotricidade</li>
+          <li>💳 Aceitamos diversos convênios</li>
         </ul>
-        <a href="https://wa.me/5500000000000" class="btn btn--whatsapp" target="_blank" rel="noopener">
-          Chamar no WhatsApp
-        </a>
-      </div>
+        <a href="https://www.instagram.com/teaencantar/" class="hero__insta" target="_blank" rel="noopener">📷 @teaencantar</a>
+      </aside>
     </div>
+    <div class="wave wave--bottom" aria-hidden="true"></div>
   </section>
 
   <!-- Sobre -->
@@ -63,124 +76,172 @@
     <div class="container section__grid">
       <div>
         <p class="section__eyebrow">Sobre nós</p>
-        <h2>Uma clínica feita para acolher</h2>
+        <h2>Um espaço feito para <span class="grad-text">acolher</span></h2>
         <p>
-          Há anos cuidamos da saúde da nossa comunidade com dedicação,
-          ética e tecnologia. Nosso compromisso é oferecer um atendimento
-          atencioso, com diagnóstico preciso e tratamento personalizado
-          para cada paciente.
+          A <strong>TEA Encantar</strong> é um centro de reabilitação multidisciplinar
+          que reúne diversas especialidades terapêuticas em um único espaço acolhedor.
+          Cuidamos de cada pessoa com respeito à neurodiversidade, promovendo
+          desenvolvimento, liberdade, autoconfiança e bem-estar.
         </p>
         <ul class="checklist">
-          <li>Profissionais altamente qualificados</li>
-          <li>Ambiente confortável e acolhedor</li>
-          <li>Equipamentos modernos</li>
-          <li>Atendimento humanizado</li>
+          <li>Atendimento humanizado e inclusivo</li>
+          <li>Diversas terapias integradas num só lugar</li>
+          <li>Foco em TEA, síndrome de Down e paralisia cerebral</li>
+          <li>Para todas as idades</li>
         </ul>
       </div>
-      <div class="stats">
-        <div class="stat"><strong>+5.000</strong><span>pacientes atendidos</span></div>
-        <div class="stat"><strong>+10</strong><span>anos de experiência</span></div>
-        <div class="stat"><strong>98%</strong><span>de satisfação</span></div>
-        <div class="stat"><strong>+8</strong><span>especialidades</span></div>
+      <div class="keywords">
+        <span>espectro</span><span>multidisciplinar</span><span>reabilitação</span>
+        <span>desenvolvimento</span><span>liberdade</span><span>autoconfiança</span>
+        <span>bem-estar</span><span>inclusão</span><span>acolhimento</span>
       </div>
     </div>
   </section>
 
-  <!-- Serviços -->
-  <section class="section section--alt" id="servicos">
+  <!-- Serviços / Terapias -->
+  <section class="section section--soft" id="servicos">
     <div class="container">
       <div class="section__head">
-        <p class="section__eyebrow">O que oferecemos</p>
-        <h2>Nossos serviços</h2>
+        <p class="section__eyebrow">Nossas terapias</p>
+        <h2>Especialidades <span class="grad-text">para cada necessidade</span></h2>
       </div>
       <div class="cards">
-        <article class="card">
-          <div class="card__icon">🩺</div>
-          <h3>Consultas</h3>
-          <p>Avaliação completa com profissionais experientes e dedicados.</p>
-        </article>
-        <article class="card">
-          <div class="card__icon">🔬</div>
-          <h3>Exames</h3>
-          <p>Exames precisos com tecnologia moderna e resultados rápidos.</p>
-        </article>
-        <article class="card">
-          <div class="card__icon">💉</div>
-          <h3>Procedimentos</h3>
-          <p>Procedimentos realizados com segurança e todo o cuidado.</p>
-        </article>
-        <article class="card">
-          <div class="card__icon">❤️</div>
-          <h3>Acompanhamento</h3>
-          <p>Cuidado contínuo para garantir sua saúde a longo prazo.</p>
-        </article>
+        <article class="card"><div class="card__icon">🤸</div><h3>Psicomotricidade</h3></article>
+        <article class="card"><div class="card__icon">🧠</div><h3>Neuropsicologia</h3></article>
+        <article class="card"><div class="card__icon">🌈</div><h3>Terapia sensorial</h3></article>
+        <article class="card"><div class="card__icon">🗣️</div><h3>Fonoaudiologia</h3></article>
+        <article class="card"><div class="card__icon">💭</div><h3>Psicologia</h3></article>
+        <article class="card"><div class="card__icon">🎵</div><h3>Musicoterapia</h3></article>
+        <article class="card"><div class="card__icon">🥗</div><h3>Nutrição</h3></article>
+        <article class="card"><div class="card__icon">📚</div><h3>Psicopedagogia</h3></article>
+        <article class="card"><div class="card__icon">💪</div><h3>Fisioterapia</h3></article>
+        <article class="card"><div class="card__icon">🧩</div><h3>Terapia ocupacional</h3></article>
+        <article class="card"><div class="card__icon">🌊</div><h3>Hidroterapia / Terapia na água</h3></article>
+        <article class="card"><div class="card__icon">🍎</div><h3>Seletividade alimentar</h3></article>
+        <article class="card"><div class="card__icon">📋</div><h3>Avaliação neuropsicológica</h3></article>
+        <article class="card"><div class="card__icon">🏊</div><h3>Aulas de natação</h3></article>
       </div>
     </div>
   </section>
 
-  <!-- Equipe -->
-  <section class="section" id="equipe">
+  <!-- Diferenciais / Estrutura -->
+  <section class="section" id="estrutura">
     <div class="container">
       <div class="section__head">
-        <p class="section__eyebrow">Nossa equipe</p>
-        <h2>Quem cuida de você</h2>
+        <p class="section__eyebrow">Por que a TEA Encantar</p>
+        <h2>Nossos <span class="grad-text">diferenciais</span></h2>
       </div>
-      <div class="cards">
-        <article class="team">
-          <div class="team__avatar">👩‍⚕️</div>
-          <h3>Dra. Nome Sobrenome</h3>
-          <p>Especialidade • CRM 00000</p>
-        </article>
-        <article class="team">
-          <div class="team__avatar">👨‍⚕️</div>
-          <h3>Dr. Nome Sobrenome</h3>
-          <p>Especialidade • CRM 00000</p>
-        </article>
-        <article class="team">
-          <div class="team__avatar">👩‍⚕️</div>
-          <h3>Dra. Nome Sobrenome</h3>
-          <p>Especialidade • CRM 00000</p>
-        </article>
+      <div class="features">
+        <div class="feature"><span class="feature__ico">👥</span><div><h3>Equipe completa</h3><p>Todas as especialidades multidisciplinares em um único espaço.</p></div></div>
+        <div class="feature"><span class="feature__ico">👶</span><div><h3>Todas as idades</h3><p>Atendimento infantil, adulto e idoso.</p></div></div>
+        <div class="feature"><span class="feature__ico">🌊</span><div><h3>Piscina aquecida</h3><p>Estrutura própria para hidroterapia e terapia na água.</p></div></div>
+        <div class="feature"><span class="feature__ico">🏋️</span><div><h3>Academia de psicomotricidade</h3><p>Ambiente preparado para o desenvolvimento motor.</p></div></div>
+        <div class="feature"><span class="feature__ico">💳</span><div><h3>Diversos convênios</h3><p>Facilidade de acesso ao tratamento que você precisa.</p></div></div>
+        <div class="feature"><span class="feature__ico">💛</span><div><h3>Acolhimento</h3><p>Ambiente lúdico, respeitoso e inclusivo com a neurodiversidade.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Convênios -->
+  <section class="section section--soft" id="convenios">
+    <div class="container">
+      <div class="section__head">
+        <p class="section__eyebrow">Atendimento facilitado</p>
+        <h2>Convênios <span class="grad-text">aceitos</span></h2>
+      </div>
+      <div class="chips">
+        <span class="chip">AMEX Saúde</span>
+        <span class="chip">CASSI</span>
+        <span class="chip">Bradesco Saúde</span>
+        <span class="chip">SulAmérica</span>
+        <span class="chip">Amil</span>
+        <span class="chip">Klini Saúde</span>
+        <span class="chip">Mediservice</span>
+        <span class="chip">FioSaúde</span>
+        <span class="chip">Assim Saúde</span>
+        <span class="chip">Leve Saúde</span>
+      </div>
+      <p class="note">ℹ️ <strong>Amil:</strong> atende somente casos de TEA, síndrome de Down e paralisia cerebral.</p>
+    </div>
+  </section>
+
+  <!-- Depoimentos (exemplos — substituir por reais) -->
+  <section class="section" id="depoimentos">
+    <div class="container">
+      <div class="section__head">
+        <p class="section__eyebrow">Quem confia na gente</p>
+        <h2>Histórias de <span class="grad-text">desenvolvimento</span></h2>
+      </div>
+      <div class="cards cards--3">
+        <article class="quote"><p>"Encontramos num só lugar tudo o que nosso filho precisava. A evolução dele nos emociona todos os dias."</p><span>— Família atendida</span></article>
+        <article class="quote"><p>"Equipe acolhedora e preparada. A hidroterapia fez toda a diferença no nosso tratamento."</p><span>— Família atendida</span></article>
+        <article class="quote"><p>"Atendimento humano e respeitoso. Recomendo de olhos fechados."</p><span>— Família atendida</span></article>
+      </div>
+      <p class="note">✏️ Depoimentos de exemplo — me envie depoimentos reais para substituir.</p>
+    </div>
+  </section>
+
+  <!-- Localização -->
+  <section class="section section--soft" id="localizacao">
+    <div class="container section__grid">
+      <div>
+        <p class="section__eyebrow">Onde estamos</p>
+        <h2>Venha nos <span class="grad-text">visitar</span></h2>
+        <ul class="contact-list">
+          <li><strong>📍 Endereço:</strong> Rua André Pinto, 24 — Ramos</li>
+          <li><strong>🚉 Referência:</strong> Próximo à estação de trem de Ramos</li>
+          <li><strong>🏙️ Cidade:</strong> Rio de Janeiro - RJ</li>
+        </ul>
+        <a href="https://wa.me/5521994835421" class="btn btn--whatsapp" target="_blank" rel="noopener">💬 Falar pelo WhatsApp</a>
+      </div>
+      <div class="map">
+        <iframe
+          title="Mapa - TEA Encantar"
+          src="https://www.google.com/maps?q=Rua%20Andr%C3%A9%20Pinto%2C%2024%20-%20Ramos%2C%20Rio%20de%20Janeiro%20-%20RJ&output=embed"
+          width="100%" height="320" style="border:0;" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </section>
 
   <!-- Contato -->
-  <section class="section section--alt" id="contato">
-    <div class="container section__grid">
-      <div>
-        <p class="section__eyebrow">Fale conosco</p>
-        <h2>Agende sua consulta</h2>
-        <p>Estamos prontos para atender você. Entre em contato pelos canais abaixo.</p>
-        <ul class="contact-list">
-          <li><strong>📞 Telefone:</strong> (00) 0000-0000</li>
-          <li><strong>💬 WhatsApp:</strong> (00) 00000-0000</li>
-          <li><strong>✉️ E-mail:</strong> contato@suaclinica.com.br</li>
-          <li><strong>📍 Endereço:</strong> Rua Exemplo, 123 — Cidade/UF</li>
-        </ul>
-        <a href="https://wa.me/5500000000000" class="btn btn--whatsapp" target="_blank" rel="noopener">
-          Agendar pelo WhatsApp
+  <section class="section" id="contato">
+    <div class="container contato">
+      <p class="section__eyebrow">Fale com a gente</p>
+      <h2>Agende sua avaliação pelo <span class="grad-text">WhatsApp</span></h2>
+      <p>Estamos prontos para acolher você e sua família. É só chamar! 💛</p>
+      <div class="contato__channels">
+        <a href="https://wa.me/5521994835421" class="channel" target="_blank" rel="noopener">
+          <span>💬</span><strong>WhatsApp</strong><small>+55 21 99483-5421</small>
+        </a>
+        <a href="https://www.instagram.com/teaencantar/" class="channel" target="_blank" rel="noopener">
+          <span>📷</span><strong>Instagram</strong><small>@teaencantar</small>
+        </a>
+        <a href="https://www.threads.net/@teaencantar" class="channel" target="_blank" rel="noopener">
+          <span>🧵</span><strong>Threads</strong><small>@teaencantar</small>
         </a>
       </div>
-      <form class="form" onsubmit="return false;">
-        <label>Nome<input type="text" placeholder="Seu nome" /></label>
-        <label>Telefone<input type="tel" placeholder="(00) 00000-0000" /></label>
-        <label>Mensagem<textarea rows="4" placeholder="Como podemos ajudar?"></textarea></label>
-        <button type="submit" class="btn">Enviar</button>
-        <small>* Formulário de exemplo — depois conecto para enviar de verdade.</small>
-      </form>
     </div>
   </section>
 
   <!-- Rodapé -->
   <footer class="footer">
     <div class="container footer__inner">
-      <span>© <span id="year"></span> Sua Clínica. Todos os direitos reservados.</span>
-      <span>Feito com cuidado 💙</span>
+      <div>
+        <span class="logo__text logo__text--footer"><span class="logo__tea">TEA</span><span class="logo__enc">encantar</span></span>
+        <p>Espaço Multidisciplinar e Reabilitação</p>
+        <p>Rua André Pinto, 24 — Ramos, Rio de Janeiro - RJ</p>
+      </div>
+      <div class="footer__links">
+        <a href="https://wa.me/5521994835421" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://www.instagram.com/teaencantar/" target="_blank" rel="noopener">Instagram</a>
+        <a href="#inicio">Topo da página</a>
+      </div>
+      <span class="footer__copy">© <span id="year"></span> TEA Encantar • Tudo num só lugar!</span>
     </div>
   </footer>
 
-  <a href="https://wa.me/5500000000000" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+  <a href="https://wa.me/5521994835421" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();

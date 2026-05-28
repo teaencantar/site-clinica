@@ -1,21 +1,22 @@
-# Sua Clínica — Site
+# TEA Encantar — Site
 
-Site institucional da clínica (HTML/CSS estático).
+Site institucional da **TEA Encantar — Espaço Multidisciplinar e Reabilitação** (Ramos, Rio de Janeiro - RJ).
 
-## Como editar
-- `index.html` — conteúdo e seções do site
-- `styles.css` — cores, fontes e layout
+Site estático (HTML/CSS), sem dependências.
+
+## Estrutura
+- `index.html` — conteúdo e seções (hero, sobre, terapias, estrutura, convênios, depoimentos, localização, contato)
+- `styles.css` — identidade visual (paleta arco-íris da marca, fontes arredondadas)
 
 ## Como ver localmente
-Abra o arquivo `index.html` no navegador (duplo clique).
+Abra `index.html` no navegador (duplo clique).
 
 ## Publicação
-- Hospedado na **Vercel** (deploy automático a cada atualização)
-- Código versionado no **GitHub**
+- Hospedado no **GitHub Pages**: https://teaencantar.github.io/site-clinica/
+- Atualização automática a cada `git push` na branch `main`.
 
-## Itens a personalizar
-- Nome da clínica (atualmente "Sua Clínica")
-- Telefone, WhatsApp, e-mail e endereço
-- Serviços e especialidades
-- Nomes e fotos da equipe
-- Cores da marca (variáveis no topo do `styles.css`)
+## Pendências / a personalizar
+- [ ] Trocar o logo de texto pelo arquivo oficial da marca (no header e no rodapé)
+- [ ] Substituir os depoimentos de exemplo por depoimentos reais
+- [ ] Adicionar fotos reais dos atendimentos/estrutura
+- [ ] Conferir os valores de hex exatos da paleta com o arquivo original do logo
