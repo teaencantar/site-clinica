@@ -295,3 +295,8 @@ img { max-width: 100%; }
 .form-success h2 { margin-bottom: 10px; }
 .form-success p { color: var(--muted); margin-bottom: 22px; }
 @media (max-width: 560px) { .field-row { grid-template-columns: 1fr; } }
+.form-section { font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--roxo); font-size: 1.05rem; margin: 8px 0 -4px; padding-bottom: 8px; border-bottom: 2px solid var(--line); }
+.check-group { border: 2px solid var(--line); border-radius: 14px; padding: 14px 16px; display: flex; flex-wrap: wrap; gap: 10px 22px; align-items: center; }
+.check-group legend { font-weight: 700; color: var(--navy); padding: 0 6px; font-size: .98rem; }
+.check--inline { background: none; padding: 6px 0; gap: 9px; font-weight: 700; }
+.check--inline input { width: 20px; height: 20px; }
