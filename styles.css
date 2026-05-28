@@ -61,6 +61,7 @@ h1, h2, h3, .logo__text { font-family: 'Fredoka', sans-serif; line-height: 1.15;
 }
 .header__inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
 .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo__img { height: 50px; width: auto; display: block; }
 .logo__tree { font-size: 1.8rem; }
 .logo__text { font-size: 1.5rem; font-weight: 700; display: inline-flex; align-items: baseline; }
 .logo__tea { color: var(--laranja); }
