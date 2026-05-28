@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sua Clínica — Cuidado e bem-estar</title>
+  <meta name="description" content="Clínica dedicada ao seu cuidado e bem-estar. Agende sua consulta." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Cabeçalho -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#inicio" class="logo">
+        <span class="logo__mark">+</span>
+        <span class="logo__text">Sua Clínica</span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#equipe">Equipe</a>
+        <a href="#contato">Contato</a>
+        <a href="#contato" class="btn btn--small">Agendar</a>
+      </nav>
+      <button class="nav__toggle" id="navToggle" aria-label="Abrir menu">☰</button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="inicio">
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <p class="hero__eyebrow">Cuidado de verdade, perto de você</p>
+        <h1>Sua saúde e bem-estar em boas mãos</h1>
+        <p class="hero__lead">
+          Atendimento humanizado, profissionais experientes e estrutura
+          moderna para cuidar de você e da sua família.
+        </p>
+        <div class="hero__actions">
+          <a href="#contato" class="btn">Agendar consulta</a>
+          <a href="#servicos" class="btn btn--ghost">Ver serviços</a>
+        </div>
+      </div>
+      <div class="hero__card">
+        <h3>Horário de atendimento</h3>
+        <ul class="hours">
+          <li><span>Segunda a Sexta</span><strong>08h – 19h</strong></li>
+          <li><span>Sábado</span><strong>08h – 13h</strong></li>
+          <li><span>Domingo</span><strong>Fechado</strong></li>
+        </ul>
+        <a href="https://wa.me/5500000000000" class="btn btn--whatsapp" target="_blank" rel="noopener">
+          Chamar no WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre -->
+  <section class="section" id="sobre">
+    <div class="container section__grid">
+      <div>
+        <p class="section__eyebrow">Sobre nós</p>
+        <h2>Uma clínica feita para acolher</h2>
+        <p>
+          Há anos cuidamos da saúde da nossa comunidade com dedicação,
+          ética e tecnologia. Nosso compromisso é oferecer um atendimento
+          atencioso, com diagnóstico preciso e tratamento personalizado
+          para cada paciente.
+        </p>
+        <ul class="checklist">
+          <li>Profissionais altamente qualificados</li>
+          <li>Ambiente confortável e acolhedor</li>
+          <li>Equipamentos modernos</li>
+          <li>Atendimento humanizado</li>
+        </ul>
+      </div>
+      <div class="stats">
+        <div class="stat"><strong>+5.000</strong><span>pacientes atendidos</span></div>
+        <div class="stat"><strong>+10</strong><span>anos de experiência</span></div>
+        <div class="stat"><strong>98%</strong><span>de satisfação</span></div>
+        <div class="stat"><strong>+8</strong><span>especialidades</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Serviços -->
+  <section class="section section--alt" id="servicos">
+    <div class="container">
+      <div class="section__head">
+        <p class="section__eyebrow">O que oferecemos</p>
+        <h2>Nossos serviços</h2>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="card__icon">🩺</div>
+          <h3>Consultas</h3>
+          <p>Avaliação completa com profissionais experientes e dedicados.</p>
+        </article>
+        <article class="card">
+          <div class="card__icon">🔬</div>
+          <h3>Exames</h3>
+          <p>Exames precisos com tecnologia moderna e resultados rápidos.</p>
+        </article>
+        <article class="card">
+          <div class="card__icon">💉</div>
+          <h3>Procedimentos</h3>
+          <p>Procedimentos realizados com segurança e todo o cuidado.</p>
+        </article>
+        <article class="card">
+          <div class="card__icon">❤️</div>
+          <h3>Acompanhamento</h3>
+          <p>Cuidado contínuo para garantir sua saúde a longo prazo.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipe -->
+  <section class="section" id="equipe">
+    <div class="container">
+      <div class="section__head">
+        <p class="section__eyebrow">Nossa equipe</p>
+        <h2>Quem cuida de você</h2>
+      </div>
+      <div class="cards">
+        <article class="team">
+          <div class="team__avatar">👩‍⚕️</div>
+          <h3>Dra. Nome Sobrenome</h3>
+          <p>Especialidade • CRM 00000</p>
+        </article>
+        <article class="team">
+          <div class="team__avatar">👨‍⚕️</div>
+          <h3>Dr. Nome Sobrenome</h3>
+          <p>Especialidade • CRM 00000</p>
+        </article>
+        <article class="team">
+          <div class="team__avatar">👩‍⚕️</div>
+          <h3>Dra. Nome Sobrenome</h3>
+          <p>Especialidade • CRM 00000</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section class="section section--alt" id="contato">
+    <div class="container section__grid">
+      <div>
+        <p class="section__eyebrow">Fale conosco</p>
+        <h2>Agende sua consulta</h2>
+        <p>Estamos prontos para atender você. Entre em contato pelos canais abaixo.</p>
+        <ul class="contact-list">
+          <li><strong>📞 Telefone:</strong> (00) 0000-0000</li>
+          <li><strong>💬 WhatsApp:</strong> (00) 00000-0000</li>
+          <li><strong>✉️ E-mail:</strong> contato@suaclinica.com.br</li>
+          <li><strong>📍 Endereço:</strong> Rua Exemplo, 123 — Cidade/UF</li>
+        </ul>
+        <a href="https://wa.me/5500000000000" class="btn btn--whatsapp" target="_blank" rel="noopener">
+          Agendar pelo WhatsApp
+        </a>
+      </div>
+      <form class="form" onsubmit="return false;">
+        <label>Nome<input type="text" placeholder="Seu nome" /></label>
+        <label>Telefone<input type="tel" placeholder="(00) 00000-0000" /></label>
+        <label>Mensagem<textarea rows="4" placeholder="Como podemos ajudar?"></textarea></label>
+        <button type="submit" class="btn">Enviar</button>
+        <small>* Formulário de exemplo — depois conecto para enviar de verdade.</small>
+      </form>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© <span id="year"></span> Sua Clínica. Todos os direitos reservados.</span>
+      <span>Feito com cuidado 💙</span>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/5500000000000" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const toggle = document.getElementById('navToggle');
+    const nav = document.getElementById('nav');
+    toggle.addEventListener('click', () => nav.classList.toggle('nav--open'));
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('nav--open')));
+  </script>
+</body>
+</html>
