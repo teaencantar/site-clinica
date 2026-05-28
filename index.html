@@ -15,7 +15,7 @@
   <link rel="apple-touch-icon" href="assets/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Poppins:wght@500;600;700;800&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -57,10 +57,10 @@
       <div class="hero__content">
         <p class="hero__eyebrow reveal">Espaço Multidisciplinar e Reabilitação</p>
         <h1 class="reveal">Tudo num <span class="grad-text">só lugar!</span></h1>
+        <p class="script-accent reveal">Corpo, mente e emoções em movimento</p>
         <p class="hero__lead reveal">
           Equipe multidisciplinar para acompanhar pessoas dentro do espectro
           autista (TEA), com foco também em síndrome de Down e paralisia cerebral.
-          <strong>Corpo, mente e emoções em movimento.</strong>
         </p>
         <div class="badges reveal">
           <span class="badge">Infantil</span>
@@ -226,10 +226,11 @@
   </section>
 
   <!-- Contato -->
-  <section class="section" id="contato">
+  <section class="section section--purple" id="contato">
+    <div class="wave wave--top" aria-hidden="true"></div>
     <div class="container contato reveal">
       <p class="section__eyebrow">Fale com a gente</p>
-      <h2>Agende sua avaliação pelo <span class="grad-text">WhatsApp</span></h2>
+      <h2>Agende sua avaliação pelo <span class="hl">WhatsApp</span></h2>
       <p>Estamos prontos para acolher você e sua família. É só chamar!</p>
       <div class="contato__channels">
         <a href="https://wa.me/5521994835421" class="channel" target="_blank" rel="noopener">
@@ -251,19 +252,19 @@
   <!-- Rodapé -->
   <footer class="footer">
     <div class="container footer__inner">
-      <div>
+      <div class="footer__brand">
         <img src="assets/logo-branco.png" alt="TEA Encantar" class="footer__logo" onerror="this.style.display='none';document.getElementById('footerTextLogo').style.display='inline-flex';" />
         <span class="logo__text logo__text--footer" id="footerTextLogo"><span class="logo__tea">TEA</span><span class="logo__enc">encantar</span></span>
         <p>Espaço Multidisciplinar e Reabilitação</p>
-        <p>Rua André Pinto, 24 — Ramos, Rio de Janeiro - RJ</p>
       </div>
-      <nav class="footer__links" aria-label="Links do rodapé">
-        <a href="https://wa.me/5521994835421" target="_blank" rel="noopener">WhatsApp</a>
-        <a href="https://www.instagram.com/teaencantar/" target="_blank" rel="noopener">Instagram</a>
-        <a href="#inicio">Topo da página</a>
-      </nav>
-      <span class="footer__copy">© <span id="year"></span> TEA Encantar • Tudo num só lugar!</span>
+      <ul class="footer__contacts">
+        <li><a href="https://wa.me/5521994835421" target="_blank" rel="noopener"><span class="fcirc"><i data-lucide="phone" aria-hidden="true"></i></span> +55 21 99483-5421</a></li>
+        <li><span class="fcirc"><i data-lucide="map-pin" aria-hidden="true"></i></span> Rua André Pinto, 24 — Ramos, RJ</li>
+        <li><span class="fcirc"><i data-lucide="train-front" aria-hidden="true"></i></span> Próximo à estação de trem de Ramos</li>
+        <li><a href="https://www.instagram.com/teaencantar/" target="_blank" rel="noopener"><span class="fcirc"><svg class="lucide" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></span> @teaencantar</a></li>
+      </ul>
     </div>
+    <div class="container footer__bottom">© <span id="year"></span> TEA Encantar • Tudo num só lugar!</div>
   </footer>
 
   <a href="https://wa.me/5521994835421" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
