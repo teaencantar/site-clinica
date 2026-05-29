@@ -300,3 +300,20 @@ img { max-width: 100%; }
 .check-group legend { font-weight: 700; color: var(--navy); padding: 0 6px; font-size: .98rem; }
 .check--inline { background: none; padding: 6px 0; gap: 9px; font-weight: 700; }
 .check--inline input { width: 20px; height: 20px; }
+
+/* FAQ / conteúdo educativo */
+.faq { display: grid; gap: 14px; max-width: 880px; margin: 0 auto; }
+.faq__item { background: #fff; border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow-sm); overflow: hidden; }
+.faq__item summary { cursor: pointer; padding: 20px 24px; font-family: 'Poppins', sans-serif; font-weight: 600; color: var(--roxo); font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 14px; }
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__item summary::after { content: "+"; font-size: 1.7rem; color: var(--magenta); line-height: 1; flex-shrink: 0; }
+.faq__item[open] summary::after { content: "\2212"; }
+.faq__item summary:hover { color: var(--magenta); }
+.faq__body { padding: 0 24px 22px; color: var(--muted); }
+.faq__body h4 { color: var(--navy); font-family: 'Poppins', sans-serif; font-size: 1.02rem; margin: 16px 0 6px; }
+.faq__body p { margin: 8px 0; }
+.faq__body ul { margin: 8px 0; padding: 0; list-style: none; display: grid; gap: 7px; }
+.faq__body li { position: relative; padding-left: 24px; }
+.faq__body li::before { content: ""; position: absolute; left: 0; top: 9px; width: 8px; height: 8px; border-radius: 50%; background: var(--magenta); }
+.faq__body li:nth-child(3n+2)::before { background: var(--verde); }
+.faq__body li:nth-child(3n+3)::before { background: var(--laranja); }
