@@ -379,3 +379,28 @@ img { max-width: 100%; }
 .estrutura-galeria .foto img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block; transition: transform .35s ease-out; }
 .estrutura-galeria .foto:hover img { transform: scale(1.05); }
 @media (max-width: 560px) { .estrutura-galeria { grid-template-columns: 1fr; } }
+
+/* Cards de terapia clicáveis */
+.card[data-terapia] { width: 100%; font-family: inherit; color: inherit; cursor: pointer; }
+.card__more { display: inline-flex; align-items: center; gap: 5px; margin-top: 12px; color: var(--magenta); font-weight: 800; font-size: .85rem; }
+.card__more .lucide { width: 15px; height: 15px; transition: transform .2s; }
+.card[data-terapia]:hover .card__more .lucide { transform: translateX(3px); }
+#terapias-conteudo { display: none; }
+
+/* Modal de terapias */
+.modal-overlay { position: fixed; inset: 0; background: rgba(58,21,53,.5); opacity: 0; visibility: hidden; transition: opacity .25s; z-index: 110; }
+.modal-overlay.open { opacity: 1; visibility: visible; }
+.modal { position: fixed; z-index: 120; top: 50%; left: 50%; transform: translate(-50%, -47%) scale(.97); opacity: 0; visibility: hidden; width: min(620px, 92vw); max-height: 86vh; overflow-y: auto; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); padding: 36px 34px; transition: opacity .25s, transform .25s, visibility .25s; }
+.modal.open { opacity: 1; visibility: visible; transform: translate(-50%, -50%) scale(1); }
+.modal__close { position: absolute; top: 14px; right: 14px; background: var(--bg-soft); border: none; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; cursor: pointer; color: var(--roxo); }
+.modal__close:hover { background: var(--lilas); }
+.modal__close .lucide { width: 22px; height: 22px; }
+.modal__body h3 { color: var(--navy); font-size: 1.6rem; margin-bottom: 10px; padding-right: 36px; }
+.modal__body h4 { color: var(--roxo); font-family: 'Poppins', sans-serif; margin: 18px 0 6px; font-size: 1.05rem; }
+.modal__body p { color: var(--muted); margin: 8px 0; }
+.modal__body ul { list-style: none; padding: 0; margin: 8px 0; display: grid; gap: 7px; }
+.modal__body li { position: relative; padding-left: 24px; color: var(--ink); }
+.modal__body li::before { content: ""; position: absolute; left: 0; top: 9px; width: 8px; height: 8px; border-radius: 50%; background: var(--magenta); }
+.modal__body li:nth-child(3n+2)::before { background: var(--verde); }
+.modal__body li:nth-child(3n+3)::before { background: var(--laranja); }
+.modal__body .t-idades { background: var(--bg-soft); border-radius: 12px; padding: 12px 15px; font-weight: 600; color: var(--roxo); margin-top: 16px; }
