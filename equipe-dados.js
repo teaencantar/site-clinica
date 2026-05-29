@@ -64,4 +64,23 @@ window.EQUIPE = [
       "Curso de ACT (Terapia de Aceitação e Compromisso)",
     ],
   },
+  {
+    nome: "Giovana Monteiro dos Santos",
+    cargo: "Terapeuta Ocupacional",
+    registro: "CREFITO/2 024687-TO",
+    experiencia: "3 anos",
+    publico: ["Infantil"],
+    foto: "assets/fotos/equipe/giovana.jpg",
+    bio: "Terapeuta Ocupacional com Certificação Internacional em Integração Sensorial de Ayres. Atuo na reabilitação infantil (0 a 12 anos).",
+    mensagem: "A tranquilidade e a leveza de trabalhar num lugar bom.",
+    formacao: [
+      "Graduação em Terapia Ocupacional (UFRJ)",
+      "Certificação Internacional em Integração Sensorial de Ayres (CLASI/CASI)",
+      "Curso de Seletividade Alimentar: Terapia Ocupacional e Integração Sensorial (LUDENS)",
+      "Capacitação em Tratamento de Seletividade Alimentar (Pratinho Feliz PRO)",
+      "Terapeuta ABA (RB Psicologia)",
+      "Método Therapy Taping, básico e avançado",
+      "Confecção de Órteses para mão, punho e dedos (HANDS ON ÓRTESES)",
+    ],
+  },
 ];
