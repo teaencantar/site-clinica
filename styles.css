@@ -404,3 +404,19 @@ img { max-width: 100%; }
 .modal__body li:nth-child(3n+2)::before { background: var(--verde); }
 .modal__body li:nth-child(3n+3)::before { background: var(--laranja); }
 .modal__body .t-idades { background: var(--bg-soft); border-radius: 12px; padding: 12px 15px; font-weight: 600; color: var(--roxo); margin-top: 16px; }
+
+/* Painel inline de terapias (abre no card, fecha ao clicar em outro) */
+.terapia-painel { grid-column: 1 / -1; max-height: 0; overflow: hidden; opacity: 0; transition: max-height .4s ease, opacity .3s ease, margin .3s ease; }
+.terapia-painel.open { max-height: 1500px; opacity: 1; margin: 2px 0 10px; }
+.terapia-painel__body { background: #fff; border: 1px solid var(--line); border-left: 6px solid var(--magenta); border-radius: var(--radius); box-shadow: var(--shadow); padding: 28px 30px; text-align: left; }
+.terapia-painel__body h3 { color: var(--navy); font-size: 1.5rem; margin-bottom: 10px; }
+.terapia-painel__body h4 { color: var(--roxo); font-family: 'Poppins', sans-serif; margin: 16px 0 6px; font-size: 1.05rem; }
+.terapia-painel__body p { color: var(--muted); margin: 8px 0; }
+.terapia-painel__body ul { list-style: none; padding: 0; margin: 8px 0; display: grid; gap: 7px; }
+.terapia-painel__body li { position: relative; padding-left: 24px; color: var(--ink); }
+.terapia-painel__body li::before { content: ""; position: absolute; left: 0; top: 9px; width: 8px; height: 8px; border-radius: 50%; background: var(--magenta); }
+.terapia-painel__body li:nth-child(3n+2)::before { background: var(--verde); }
+.terapia-painel__body li:nth-child(3n+3)::before { background: var(--laranja); }
+.terapia-painel__body .t-idades { background: var(--bg-soft); border-radius: 12px; padding: 12px 15px; font-weight: 600; color: var(--roxo); margin-top: 16px; }
+.card--ativo { box-shadow: 0 0 0 3px var(--magenta), var(--shadow) !important; }
+.card--ativo .card__more .lucide { transform: rotate(90deg); }

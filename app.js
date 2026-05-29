@@ -38,37 +38,56 @@ if (prefersReduced || !('IntersectionObserver' in window)) {
   revealEls.forEach(el => io.observe(el));
 }
 
-// Modal de terapias (clica no card -> abre conteúdo)
-const terapiaModal = document.getElementById('terapiaModal');
-const terapiaOverlay = document.getElementById('terapiaOverlay');
-const terapiaBody = document.getElementById('terapiaBody');
-const terapiaClose = document.getElementById('terapiaClose');
-let ultimoFoco = null;
+// Terapias: painel inline que abre no card clicado e fecha ao clicar em outro
+const terapiasGrid = document.querySelector('#servicos .cards');
+const terapiasConteudo = document.getElementById('terapias-conteudo');
+let terapiaPainel = null;
+let terapiaAtiva = null;
 
-function abrirTerapia(id) {
-  const fonte = document.querySelector(`#terapias-conteudo [data-terapia="${id}"]`);
-  if (!fonte || !terapiaModal) return;
-  terapiaBody.innerHTML = fonte.innerHTML;
-  ultimoFoco = document.activeElement;
-  terapiaModal.classList.add('open');
-  terapiaOverlay.classList.add('open');
-  document.body.style.overflow = 'hidden';
-  terapiaBody.scrollTop = 0;
-  if (terapiaClose) terapiaClose.focus();
+function criarPainelTerapia() {
+  const el = document.createElement('div');
+  el.className = 'terapia-painel';
+  el.setAttribute('role', 'region');
+  el.innerHTML = '<div class="terapia-painel__body"></div>';
+  return el;
+}
+function ultimoDaLinha(card) {
+  let last = card;
+  terapiasGrid.querySelectorAll('.card[data-terapia]').forEach((c) => {
+    if (Math.abs(c.offsetTop - card.offsetTop) < 4) last = c;
+  });
+  return last;
+}
+function abrirTerapia(card) {
+  if (!terapiasGrid || !terapiasConteudo) return;
+  if (!terapiaPainel) terapiaPainel = criarPainelTerapia();
+  const fonte = terapiasConteudo.querySelector(`[data-terapia="${card.dataset.terapia}"]`);
+  terapiaPainel.querySelector('.terapia-painel__body').innerHTML = fonte ? fonte.innerHTML : '';
+  ultimoDaLinha(card).after(terapiaPainel);
+  void terapiaPainel.offsetHeight; // reflow p/ animar
+  terapiaPainel.classList.add('open');
+  terapiasGrid.querySelectorAll('.card[data-terapia]').forEach((c) => {
+    const ativo = c === card;
+    c.classList.toggle('card--ativo', ativo);
+    c.setAttribute('aria-expanded', ativo ? 'true' : 'false');
+  });
+  terapiaAtiva = card;
 }
 function fecharTerapia() {
-  if (!terapiaModal) return;
-  terapiaModal.classList.remove('open');
-  terapiaOverlay.classList.remove('open');
-  document.body.style.overflow = '';
-  if (ultimoFoco) ultimoFoco.focus();
+  if (terapiaPainel) terapiaPainel.classList.remove('open');
+  if (terapiaAtiva) {
+    terapiaAtiva.classList.remove('card--ativo');
+    terapiaAtiva.setAttribute('aria-expanded', 'false');
+  }
+  terapiaAtiva = null;
 }
-
-document.querySelectorAll('.card[data-terapia]').forEach(card =>
-  card.addEventListener('click', () => abrirTerapia(card.dataset.terapia))
-);
-if (terapiaClose) terapiaClose.addEventListener('click', fecharTerapia);
-if (terapiaOverlay) terapiaOverlay.addEventListener('click', fecharTerapia);
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && terapiaModal && terapiaModal.classList.contains('open')) fecharTerapia();
+document.querySelectorAll('.card[data-terapia]').forEach((card) => {
+  card.setAttribute('aria-expanded', 'false');
+  card.addEventListener('click', () => {
+    if (terapiaAtiva === card) fecharTerapia();
+    else abrirTerapia(card);
+  });
+});
+window.addEventListener('resize', () => {
+  if (terapiaAtiva && terapiaPainel) ultimoDaLinha(terapiaAtiva).after(terapiaPainel);
 });
