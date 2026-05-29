@@ -1,0 +1,67 @@
+// === Equipe TEA Encantar ===
+// Cada profissional é uma entrada. Para adicionar, copie um bloco e preencha.
+// (No futuro, isso pode vir direto do banco de dados.)
+window.EQUIPE = [
+  {
+    nome: "Raquel Moreira Gonçalves",
+    cargo: "Psicóloga",
+    registro: "CRP 05/65717",
+    experiencia: "6 anos",
+    publico: ["Infantil", "Adulto", "Idoso"],
+    foto: "assets/fotos/equipe/raquel.jpg",
+    bio: "Psicóloga clínica com atuação voltada para crianças, adolescentes e adultos. Realizo atendimentos com foco no acolhimento, na escuta qualificada e na promoção da saúde mental, oferecendo um espaço seguro, ético e humanizado para cada paciente.",
+    mensagem: "Troca de experiências e a construção de um cuidado mais humanizado e acolhedor para cada paciente.",
+    formacao: [
+      "Graduação em Psicologia",
+      "Pós-graduação em Saúde Mental, Psicopatologia e Atenção Psicossocial",
+      "Pós-graduação em Psicologia Hospitalar",
+      "Pós-graduação em Terapia Cognitivo-Comportamental (TCC)",
+      "Pós-graduação em Transtorno do Espectro Autista (TEA)",
+      "Pós-graduação em Neuropsicologia e Reabilitação",
+    ],
+  },
+  {
+    nome: "Tainá Manhães",
+    cargo: "Psicóloga",
+    registro: "CRP 05/71180",
+    experiencia: "2 anos",
+    publico: ["Infantil", "Adulto"],
+    foto: "assets/fotos/equipe/taina.jpg",
+    bio: "Psicóloga especialista em Saúde Mental. Meu propósito é oferecer um cuidado humano e acolhedor. No atendimento infantil ao TEA, uso o brincar terapêutico para conectar e desenvolver as potências de cada criança, com colo e orientação prática para acolher também o coração dos pais.",
+    mensagem: "Fazer parte da equipe significa ajudar a alcançar as pessoas que precisam de cuidado. É gratificante transformar a técnica da psicologia em afeto e conexão humana!",
+    formacao: [
+      "Graduação em Psicologia (Universidade Estácio de Sá)",
+      "Pós-graduação em Saúde Mental e Atenção Psicossocial (Universidade Estácio de Sá)",
+    ],
+  },
+  {
+    nome: "Vanusa dos Santos Cordeiro",
+    cargo: "Psicomotricista",
+    registro: "CBO 223915",
+    experiencia: "1 ano",
+    publico: ["Infantil"],
+    foto: "assets/fotos/equipe/vanusa.jpg",
+    bio: "Psicomotricista dedicada ao desenvolvimento infantil, com um olhar acolhedor e lúdico para cada criança e sua família.",
+    mensagem: "",
+    formacao: [
+      "Graduação em Psicomotricidade e Ludicidade na Educação Infantil",
+      "Curso de ABA e Modelo Denver",
+    ],
+  },
+  {
+    nome: "Isabela Unis",
+    cargo: "Psicóloga",
+    registro: "CRP 05/84591",
+    experiencia: "6 meses",
+    publico: ["Adulto", "Idoso"],
+    foto: "assets/fotos/equipe/isabela.jpg",
+    bio: "Psicóloga clínica e pós-graduanda em Terapia de Aceitação e Compromisso, com atuação junto a adolescentes, adultos e idosos. Trabalho com escuta qualificada, acolhimento e intervenções personalizadas, com empatia e compromisso com o cuidado.",
+    mensagem: "A troca entre diferentes visões sobre o mesmo caso, com um profissional ajudando o outro a acompanhar o paciente de forma integrada e completa.",
+    formacao: [
+      "Graduação em Psicologia (UNASP)",
+      "Pós-graduação em Terapia de Aceitação e Compromisso, em andamento (UNIFATEC)",
+      "Curso sobre luto",
+      "Curso de ACT (Terapia de Aceitação e Compromisso)",
+    ],
+  },
+];

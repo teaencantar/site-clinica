@@ -91,3 +91,99 @@ document.querySelectorAll('.card[data-terapia]').forEach((card) => {
 window.addEventListener('resize', () => {
   if (terapiaAtiva && terapiaPainel) ultimoDaLinha(terapiaAtiva).after(terapiaPainel);
 });
+
+// Diretório da equipe (busca + filtro + perfil deslizante)
+const eqGrid = document.getElementById('equipeGrid');
+if (eqGrid && window.EQUIPE) {
+  const EQUIPE = window.EQUIPE;
+  const eqBusca = document.getElementById('equipeBusca');
+  const eqFiltros = document.getElementById('equipeFiltros');
+  const eqContagem = document.getElementById('equipeContagem');
+  const eqVazio = document.getElementById('equipeVazio');
+  const perfil = document.getElementById('perfil');
+  const perfilOverlay = document.getElementById('perfilOverlay');
+  const perfilBody = document.getElementById('perfilBody');
+  const perfilPrev = document.getElementById('perfilPrev');
+  const perfilNext = document.getElementById('perfilNext');
+  let filtro = { texto: '', pub: 'Todos' };
+  let lista = [];
+  let perfilI = -1;
+
+  const esc = (s) => String(s || '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+  function aplicar() {
+    const t = filtro.texto.trim().toLowerCase();
+    lista = EQUIPE.filter((p) => {
+      const okT = !t || (p.nome + ' ' + (p.cargo || '')).toLowerCase().includes(t);
+      const okP = filtro.pub === 'Todos' || (p.publico || []).includes(filtro.pub);
+      return okT && okP;
+    });
+    renderGrid();
+  }
+
+  function renderGrid() {
+    eqGrid.innerHTML = lista.map((p, i) => `
+      <button type="button" class="mini" data-i="${i}">
+        <span class="mini__foto"><img src="${esc(p.foto)}" alt="Foto de ${esc(p.nome)}" loading="lazy" /></span>
+        <span class="mini__nome">${esc(p.nome)}</span>
+        <span class="mini__cargo">${esc(p.cargo)}</span>
+      </button>`).join('');
+    eqVazio.hidden = lista.length > 0;
+    eqContagem.textContent = lista.length === EQUIPE.length
+      ? `${EQUIPE.length} profissionais`
+      : `${lista.length} de ${EQUIPE.length} profissionais`;
+  }
+
+  function abrirPerfil(i) {
+    if (i < 0 || i >= lista.length) return;
+    perfilI = i;
+    const p = lista[i];
+    const tags = (p.publico || []).map((x) => `<span>${esc(x)}</span>`).join('');
+    const form = (p.formacao || []).map((f) => `<li>${esc(f)}</li>`).join('');
+    perfilBody.innerHTML = `
+      <div class="perfil__foto"><img src="${esc(p.foto)}" alt="Foto de ${esc(p.nome)}" /></div>
+      <h3>${esc(p.nome)}</h3>
+      <p class="perfil__cargo">${esc(p.cargo)}${p.registro ? ' · ' + esc(p.registro) : ''}</p>
+      ${p.experiencia ? `<p class="perfil__exp">${esc(p.experiencia)} de experiência</p>` : ''}
+      ${tags ? `<div class="perfil__tags">${tags}</div>` : ''}
+      ${p.bio ? `<p class="perfil__bio">${esc(p.bio)}</p>` : ''}
+      ${p.mensagem ? `<p class="perfil__msg">"${esc(p.mensagem)}"</p>` : ''}
+      ${form ? `<h4>Formação e cursos</h4><ul class="perfil__form">${form}</ul>` : ''}`;
+    perfilPrev.disabled = i === 0;
+    perfilNext.disabled = i === lista.length - 1;
+    perfil.classList.add('open');
+    perfilOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    perfilBody.scrollTop = 0;
+    if (window.lucide) lucide.createIcons();
+  }
+
+  function fecharPerfil() {
+    perfil.classList.remove('open');
+    perfilOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+    perfilI = -1;
+  }
+
+  eqGrid.addEventListener('click', (e) => { const b = e.target.closest('.mini'); if (b) abrirPerfil(+b.dataset.i); });
+  eqBusca.addEventListener('input', () => { filtro.texto = eqBusca.value; aplicar(); });
+  eqFiltros.addEventListener('click', (e) => {
+    const b = e.target.closest('.filtro');
+    if (!b) return;
+    eqFiltros.querySelectorAll('.filtro').forEach((f) => f.classList.toggle('is-on', f === b));
+    filtro.pub = b.dataset.pub;
+    aplicar();
+  });
+  document.getElementById('perfilClose').addEventListener('click', fecharPerfil);
+  perfilOverlay.addEventListener('click', fecharPerfil);
+  perfilPrev.addEventListener('click', () => abrirPerfil(perfilI - 1));
+  perfilNext.addEventListener('click', () => abrirPerfil(perfilI + 1));
+  document.addEventListener('keydown', (e) => {
+    if (!perfil.classList.contains('open')) return;
+    if (e.key === 'Escape') fecharPerfil();
+    else if (e.key === 'ArrowLeft') abrirPerfil(perfilI - 1);
+    else if (e.key === 'ArrowRight') abrirPerfil(perfilI + 1);
+  });
+
+  aplicar();
+}
