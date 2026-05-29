@@ -141,14 +141,20 @@ if (eqGrid && window.EQUIPE) {
     const tags = (p.publico || []).map((x) => `<span>${esc(x)}</span>`).join('');
     const form = (p.formacao || []).map((f) => `<li>${esc(f)}</li>`).join('');
     perfilBody.innerHTML = `
-      <div class="perfil__foto"><img src="${esc(p.foto)}" alt="Foto de ${esc(p.nome)}" /></div>
-      <h3>${esc(p.nome)}</h3>
-      <p class="perfil__cargo">${esc(p.cargo)}${p.registro ? ' · ' + esc(p.registro) : ''}</p>
-      ${p.experiencia ? `<p class="perfil__exp">${esc(p.experiencia)} de experiência</p>` : ''}
-      ${tags ? `<div class="perfil__tags">${tags}</div>` : ''}
-      ${p.bio ? `<p class="perfil__bio">${esc(p.bio)}</p>` : ''}
-      ${p.mensagem ? `<p class="perfil__msg">"${esc(p.mensagem)}"</p>` : ''}
-      ${form ? `<h4>Formação e cursos</h4><ul class="perfil__form">${form}</ul>` : ''}`;
+      <div class="perfil__lado">
+        <div class="perfil__foto"><img src="${esc(p.foto)}" alt="Foto de ${esc(p.nome)}" /></div>
+        <div class="perfil__id">
+          <h3>${esc(p.nome)}</h3>
+          <p class="perfil__cargo">${esc(p.cargo)}${p.registro ? ' · ' + esc(p.registro) : ''}</p>
+        </div>
+      </div>
+      <div class="perfil__main">
+        ${p.experiencia ? `<p class="perfil__exp">${esc(p.experiencia)} de experiência</p>` : ''}
+        ${tags ? `<div class="perfil__tags">${tags}</div>` : ''}
+        ${p.bio ? `<p class="perfil__bio">${esc(p.bio)}</p>` : ''}
+        ${p.mensagem ? `<p class="perfil__msg">"${esc(p.mensagem)}"</p>` : ''}
+        ${form ? `<h4>Formação e cursos</h4><ul class="perfil__form">${form}</ul>` : ''}
+      </div>`;
     perfilPrev.disabled = i === 0;
     perfilNext.disabled = i === lista.length - 1;
     perfil.classList.add('open');
