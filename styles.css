@@ -422,7 +422,7 @@ img { max-width: 100%; }
 .card--ativo .card__more .lucide { transform: rotate(90deg); }
 
 /* Nossa Equipe */
-.equipe-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+.equipe-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
 .membro { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; transition: transform .25s ease-out, box-shadow .25s ease-out; }
 .membro:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
 .membro__foto { aspect-ratio: 1 / 1; background: var(--lilas); }
