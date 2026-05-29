@@ -420,3 +420,26 @@ img { max-width: 100%; }
 .terapia-painel__body .t-idades { background: var(--bg-soft); border-radius: 12px; padding: 12px 15px; font-weight: 600; color: var(--roxo); margin-top: 16px; }
 .card--ativo { box-shadow: 0 0 0 3px var(--magenta), var(--shadow) !important; }
 .card--ativo .card__more .lucide { transform: rotate(90deg); }
+
+/* Nossa Equipe */
+.equipe-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+.membro { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; transition: transform .25s ease-out, box-shadow .25s ease-out; }
+.membro:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+.membro__foto { aspect-ratio: 1 / 1; background: var(--lilas); }
+.membro__foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.membro__corpo { padding: 22px 22px 24px; display: flex; flex-direction: column; }
+.membro__corpo h3 { color: var(--navy); font-size: 1.25rem; }
+.membro__cargo { color: var(--roxo); font-weight: 700; margin: 4px 0 0; }
+.membro__exp { color: var(--muted); font-weight: 600; font-size: .9rem; margin: 2px 0 0; }
+.membro__tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 0; }
+.membro__tags span { background: var(--lilas); color: var(--roxo); border-radius: 999px; padding: 3px 12px; font-size: .78rem; font-weight: 800; }
+.membro__bio { color: var(--muted); margin: 12px 0 0; font-size: .95rem; }
+.membro__msg { color: var(--ink); font-style: italic; border-left: 3px solid var(--amarelo); padding-left: 12px; margin: 14px 0 0; font-size: .95rem; }
+.membro__form { margin-top: 14px; }
+.membro__form summary { cursor: pointer; font-weight: 800; color: var(--magenta); font-size: .9rem; list-style: none; }
+.membro__form summary::-webkit-details-marker { display: none; }
+.membro__form summary::after { content: " +"; }
+.membro__form[open] summary::after { content: " \2212"; }
+.membro__form ul { list-style: none; padding: 0; margin: 10px 0 0; display: grid; gap: 6px; }
+.membro__form li { position: relative; padding-left: 20px; color: var(--ink); font-size: .9rem; }
+.membro__form li::before { content: ""; position: absolute; left: 0; top: 8px; width: 7px; height: 7px; border-radius: 50%; background: var(--verde); }
