@@ -436,10 +436,14 @@ img { max-width: 100%; }
 .membro__bio { color: var(--muted); margin: 12px 0 0; font-size: .95rem; }
 .membro__msg { color: var(--ink); font-style: italic; border-left: 3px solid var(--amarelo); padding-left: 12px; margin: 14px 0 0; font-size: .95rem; }
 .membro__form { margin-top: 14px; }
-.membro__form summary { cursor: pointer; font-weight: 800; color: var(--magenta); font-size: .9rem; list-style: none; }
+.membro__form summary { display: inline-flex; align-items: center; cursor: pointer; font-weight: 800; color: var(--roxo); font-size: .88rem; list-style: none; border: 2px solid var(--line); border-radius: 999px; padding: 7px 16px; transition: border-color .2s, color .2s; }
+.membro__form summary:hover { border-color: var(--roxo); }
+.membro__form[open] summary { color: var(--magenta); border-color: var(--magenta); }
 .membro__form summary::-webkit-details-marker { display: none; }
 .membro__form summary::after { content: " +"; }
 .membro__form[open] summary::after { content: " \2212"; }
+.membro__h { color: var(--roxo); font-family: 'Poppins', sans-serif; margin: 16px 0 6px; font-size: .98rem; }
+.membro__form .membro__bio { margin-top: 16px; }
 .membro__form ul { list-style: none; padding: 0; margin: 10px 0 0; display: grid; gap: 6px; }
 .membro__form li { position: relative; padding-left: 20px; color: var(--ink); font-size: .9rem; }
 .membro__form li::before { content: ""; position: absolute; left: 0; top: 8px; width: 7px; height: 7px; border-radius: 50%; background: var(--verde); }
