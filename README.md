@@ -1,12 +1,12 @@
-# TEA Encantar — Site
+# TEA Encantar: Site
 
-Site institucional da **TEA Encantar — Espaço Multidisciplinar e Reabilitação** (Ramos, Rio de Janeiro - RJ).
+Site institucional da **TEA Encantar: Espaço Multidisciplinar e Reabilitação** (Ramos, Rio de Janeiro - RJ).
 
 Site estático (HTML/CSS), sem dependências.
 
 ## Estrutura
-- `index.html` — conteúdo e seções (hero, sobre, terapias, estrutura, convênios, depoimentos, localização, contato)
-- `styles.css` — identidade visual (paleta arco-íris da marca, fontes arredondadas)
+- `index.html`: conteúdo e seções (hero, sobre, terapias, estrutura, convênios, depoimentos, localização, contato)
+- `styles.css`: identidade visual (paleta arco-íris da marca, fontes arredondadas)
 
 ## Como ver localmente
 Abra `index.html` no navegador (duplo clique).

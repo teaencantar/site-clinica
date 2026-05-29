@@ -1,4 +1,4 @@
-// === Loja TEA Encantar — carrinho (client-side) ===
+// === Loja TEA Encantar: carrinho (client-side) ===
 const WPP = "5521994835421";
 const STORAGE_KEY = "tea_cart";
 const produtos = window.PRODUTOS || [];
@@ -102,7 +102,7 @@ function checkout() {
   let msg = "Olá! Gostaria de fazer um pedido na loja TEA Encantar:\n\n";
   Object.entries(cart).forEach(([id, qty]) => {
     const p = produtoPorId(id);
-    if (p) msg += `• ${qty}x ${p.nome} — ${fmt(p.preco * qty)}\n`;
+    if (p) msg += `• ${qty}x ${p.nome}: ${fmt(p.preco * qty)}\n`;
   });
   msg += `\nTotal: ${fmt(totalValor())}`;
   window.open(`https://wa.me/${WPP}?text=${encodeURIComponent(msg)}`, "_blank");

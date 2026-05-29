@@ -160,7 +160,7 @@ img { max-width: 100%; }
 .keywords span:nth-child(6n+5){ background: var(--verde); }
 .keywords span:nth-child(6n+6){ background: var(--lavanda); }
 
-/* Cards de terapias — ícones circulares coloridos */
+/* Cards de terapias: ícones circulares coloridos */
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
 .cards--3 { grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); }
 .card { background: #fff; border-radius: var(--radius); padding: 28px 22px; text-align: center; border: 1px solid var(--line); box-shadow: var(--shadow-sm); transition: transform .25s ease-out, box-shadow .25s ease-out; }
