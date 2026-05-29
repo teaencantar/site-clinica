@@ -17,3 +17,6 @@ Thumbs.db
 
 # Scripts auxiliares (geração de assets)
 _tools/
+
+# Fotos originais sem tratamento (NÃO publicar)
+_originais/

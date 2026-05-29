@@ -371,3 +371,11 @@ img { max-width: 100%; }
 .cart-foot .btn { width: 100%; }
 .cart-foot small { color: var(--muted); text-align: center; }
 .btn:disabled { opacity: .5; cursor: not-allowed; transform: none; box-shadow: none; }
+
+/* Galeria da estrutura (fotos reais) */
+.estrutura-cap { text-align: center; font-family: 'Poppins', sans-serif; font-weight: 600; color: var(--roxo); font-size: 1.15rem; margin: 46px 0 18px; }
+.estrutura-galeria { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 720px; margin: 0 auto; }
+.estrutura-galeria .foto { margin: 0; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--line); }
+.estrutura-galeria .foto img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block; transition: transform .35s ease-out; }
+.estrutura-galeria .foto:hover img { transform: scale(1.05); }
+@media (max-width: 560px) { .estrutura-galeria { grid-template-columns: 1fr; } }
