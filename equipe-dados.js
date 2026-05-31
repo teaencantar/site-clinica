@@ -115,7 +115,7 @@ window.EQUIPE = [
     formacao: [
       "Graduação em Fonoaudiologia (UFRJ)",
       "Graduação em História (UFF)",
-      "Pós-graduação em Métodos e Processos do Ensino Superior (AFE)",
+      "Pós-graduação em Métodos e Processos do Ensino Superior (AFE - UNIGRANRIO)",
     ],
   },
   {
