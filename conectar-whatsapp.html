@@ -41,29 +41,31 @@
   function log(m){ document.getElementById("out").innerText = (typeof m === "string" ? m : JSON.stringify(m, null, 2)); }
 
   var sessionInfo = {};
+  var eventos = [];
   window.addEventListener("message", function(event){
     try { if (!/facebook\.com$/.test(new URL(event.origin).hostname)) return; } catch(e){ return; }
     try {
       var d = JSON.parse(event.data);
       if (d.type === "WA_EMBEDDED_SIGNUP") {
+        eventos.push(d);
         if (d.data && (d.data.phone_number_id || d.data.waba_id)) { sessionInfo = d.data; }
-        log("Evento: " + (d.event || "") + "\n" + JSON.stringify(d.data || {}, null, 2));
+        log("Evento recebido:\n" + JSON.stringify(d, null, 2) + "\n\n(sessionInfo ate agora: " + JSON.stringify(sessionInfo) + ")");
       }
     } catch(e){}
   });
 
   function cb(response){
+    log("Resposta do login:\n" + JSON.stringify(response, null, 2) + "\n\nEventos capturados: " + eventos.length + "\nsessionInfo: " + JSON.stringify(sessionInfo, null, 2));
     if (response.authResponse && response.authResponse.code) {
-      log("Finalizando conexão...");
-      fetch(POST_URL, {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ code: response.authResponse.code, phone_number_id: sessionInfo.phone_number_id, waba_id: sessionInfo.waba_id })
-      }).then(function(r){ return r.json(); })
-        .then(function(j){ log(j); })
-        .catch(function(e){ log("Erro ao finalizar: " + e); });
-    } else {
-      log("Login cancelado ou sem código.\n" + JSON.stringify(response, null, 2));
+      setTimeout(function(){
+        fetch(POST_URL, {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ code: response.authResponse.code, phone_number_id: sessionInfo.phone_number_id, waba_id: sessionInfo.waba_id })
+        }).then(function(r){ return r.json(); })
+          .then(function(j){ log("RESULTADO FINAL:\n" + JSON.stringify(j, null, 2) + "\n\n--- eventos ---\n" + JSON.stringify(eventos, null, 2)); })
+          .catch(function(e){ log("Erro ao finalizar: " + e); });
+      }, 500);
     }
   }
 
