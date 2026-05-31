@@ -129,7 +129,7 @@ if (eqGrid && window.EQUIPE) {
         <span class="mini__cargo">${esc(p.cargo)}</span>
       </button>`).join('');
     eqVazio.hidden = lista.length > 0;
-    eqContagem.textContent = lista.length === EQUIPE.length
+    if (eqContagem) eqContagem.textContent = lista.length === EQUIPE.length
       ? `${EQUIPE.length} profissionais`
       : `${lista.length} de ${EQUIPE.length} profissionais`;
   }
@@ -173,7 +173,7 @@ if (eqGrid && window.EQUIPE) {
 
   eqGrid.addEventListener('click', (e) => { const b = e.target.closest('.mini'); if (b) abrirPerfil(+b.dataset.i); });
   eqBusca.addEventListener('input', () => { filtro.texto = eqBusca.value; aplicar(); });
-  eqFiltros.addEventListener('click', (e) => {
+  if (eqFiltros) eqFiltros.addEventListener('click', (e) => {
     const b = e.target.closest('.filtro');
     if (!b) return;
     eqFiltros.querySelectorAll('.filtro').forEach((f) => f.classList.toggle('is-on', f === b));
