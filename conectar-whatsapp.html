@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conectar WhatsApp - TEA Encantar</title>
+<style>
+  body{font-family:system-ui,Arial,sans-serif;background:#f0e8f8;color:#2a1330;margin:0;padding:24px;display:flex;justify-content:center}
+  .card{background:#fff;max-width:560px;width:100%;border-radius:14px;padding:24px;box-shadow:0 6px 24px rgba(112,56,112,.15)}
+  h1{color:#703870;font-size:20px;margin:0 0 6px}
+  p{font-size:14px;line-height:1.5;color:#4a3556}
+  button{background:#703870;color:#fff;border:none;border-radius:10px;padding:14px 20px;font-size:16px;font-weight:700;cursor:pointer;margin-top:10px}
+  #out{margin-top:16px;background:#faf7fd;border:1px solid #d9c8ec;border-radius:10px;padding:12px;font-size:13px;white-space:pre-wrap;word-break:break-word;min-height:20px}
+  ol{font-size:14px;color:#4a3556;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>Conectar WhatsApp da clínica (Coexistência)</h1>
+  <p>Isto conecta o número da clínica ao robô <b>mantendo o app no celular</b>. Você vai escanear um QR code no WhatsApp Business.</p>
+  <ol>
+    <li>Clique no botão abaixo</li>
+    <li>Faça login com sua conta do Facebook (admin)</li>
+    <li>Escolha o número e a opção de manter o app (Coexistência)</li>
+    <li>Escaneie o QR no WhatsApp Business do celular</li>
+  </ol>
+  <button onclick="launch()">Conectar WhatsApp</button>
+  <div id="out">Carregando o login do Facebook...</div>
+</div>
+
+<script>
+  var APP_ID = "1518805573367571";
+  var CONFIG_ID = "1434982105053965";
+  var POST_URL = "https://eujvvqccyiavphqhpwrz.supabase.co/functions/v1/conectar";
+
+  window.fbAsyncInit = function() {
+    FB.init({ appId: APP_ID, autoLogAppEvents: true, xfbml: true, version: "v21.0" });
+    log("Pronto. Clique em Conectar WhatsApp.");
+  };
+
+  function log(m){ document.getElementById("out").innerText = (typeof m === "string" ? m : JSON.stringify(m, null, 2)); }
+
+  var sessionInfo = {};
+  window.addEventListener("message", function(event){
+    try { if (!/facebook\.com$/.test(new URL(event.origin).hostname)) return; } catch(e){ return; }
+    try {
+      var d = JSON.parse(event.data);
+      if (d.type === "WA_EMBEDDED_SIGNUP") {
+        if (d.data && (d.data.phone_number_id || d.data.waba_id)) { sessionInfo = d.data; }
+        log("Evento: " + (d.event || "") + "\n" + JSON.stringify(d.data || {}, null, 2));
+      }
+    } catch(e){}
+  });
+
+  function cb(response){
+    if (response.authResponse && response.authResponse.code) {
+      log("Finalizando conexão...");
+      fetch(POST_URL, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ code: response.authResponse.code, phone_number_id: sessionInfo.phone_number_id, waba_id: sessionInfo.waba_id })
+      }).then(function(r){ return r.json(); })
+        .then(function(j){ log(j); })
+        .catch(function(e){ log("Erro ao finalizar: " + e); });
+    } else {
+      log("Login cancelado ou sem código.\n" + JSON.stringify(response, null, 2));
+    }
+  }
+
+  function launch(){
+    if (typeof FB === "undefined") { log("O login ainda está carregando, espere 2 segundos e clique de novo."); return; }
+    FB.login(cb, {
+      config_id: CONFIG_ID,
+      response_type: "code",
+      override_default_response_type: true,
+      extras: { setup: {}, featureType: "whatsapp_business_app_onboarding", sessionInfoVersion: "3" }
+    });
+  }
+</script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js"></script>
+</body>
+</html>
