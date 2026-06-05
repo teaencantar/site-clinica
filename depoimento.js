@@ -1,6 +1,6 @@
 // === Configuração do Supabase (chave publishable = pública/segura no navegador) ===
-const SUPABASE_URL = 'https://eujvvqccyiavphqhpwrz.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_OnSI1olPz8oC7fNn1JQPsA_o9vJ34Zu';
+const SUPABASE_URL = 'https://nnbspcykhvcxpdywpbtb.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_4UVKa8FSan1KJNYDqydBQQ_I40e39bS';
 const BUCKET = 'depoimentos';
 
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
