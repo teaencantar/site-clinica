@@ -24,6 +24,9 @@ th,td{text-align:left;padding:10px 12px;font-size:14px;border-bottom:1px solid #
 th{background:#faf7fd;color:#5a4866;font-size:12px;text-transform:uppercase;letter-spacing:.03em}
 tr.atencao td{background:#fff8f3}
 tr.feito td:not(:first-child){opacity:.45}
+tr.pausado td{background:#fffbea}
+.pausar{background:#fef3c7;color:#92400e}
+.reativar{background:#dcfce7;color:#166534}
 .ckcol{text-align:center;width:54px}
 .badge{display:inline-block;padding:3px 9px;border-radius:999px;font-size:12px;font-weight:600}
 .acao{display:inline-block;text-decoration:none;padding:5px 9px;border-radius:8px;font-size:13px;margin-right:6px;white-space:nowrap;border:none;font-family:inherit;cursor:pointer}
@@ -114,17 +117,18 @@ function render(){
     if(filtro!=="todos"&&r.estado!==filtro)return;
     if(q){const hay=(esc(r.telefone)+" "+esc(r.nome)+" "+esc(r.beneficiario)+" "+esc(r.plano)).toLowerCase();if(hay.indexOf(q)<0)return;}
     vis++;
-    const tr=document.createElement("tr");if(ATENCAO.indexOf(r.estado)>=0)tr.className="atencao";if(r.respondido)tr.classList.add("feito");
+    const tr=document.createElement("tr");if(ATENCAO.indexOf(r.estado)>=0)tr.className="atencao";if(r.respondido)tr.classList.add("feito");if(r.bot_pausado)tr.classList.add("pausado");
     const td0=document.createElement("td");td0.className="ckcol";const cb=document.createElement("input");cb.type="checkbox";cb.checked=!!r.respondido;cb.title="Marcar como respondido";cb.style.width="20px";cb.style.height="20px";cb.style.cursor="pointer";cb.onchange=()=>marcarRespondido(r,cb.checked);td0.appendChild(cb);tr.appendChild(td0);
     const td1=document.createElement("td");td1.textContent=esc(r.telefone);tr.appendChild(td1);
     const td2=document.createElement("td");const nome=document.createElement("div");nome.textContent=r.nome||"—";td2.appendChild(nome);if(r.beneficiario){const b=document.createElement("div");b.style.fontSize="12px";b.style.color="#7a6a86";b.textContent="paciente: "+r.beneficiario;td2.appendChild(b);}tr.appendChild(td2);
     const td3=document.createElement("td");td3.className="pl";td3.textContent=r.plano||"—";tr.appendChild(td3);
-    const td4=document.createElement("td");td4.appendChild(badge(r.estado));tr.appendChild(td4);
+    const td4=document.createElement("td");td4.appendChild(badge(r.estado));if(r.bot_pausado){const pp=document.createElement("span");pp.className="badge";pp.style.background="#fde68a";pp.style.color="#92400e";pp.style.marginLeft="4px";pp.textContent="⏸ bot";td4.appendChild(pp);}tr.appendChild(td4);
     const td5=document.createElement("td");td5.textContent=r.arquivos||0;tr.appendChild(td5);
     const td6=document.createElement("td");td6.className="pl";td6.textContent=fmtData(r.ultima);tr.appendChild(td6);
     const td7=document.createElement("td");const num=digits(r.telefone);
     const a=document.createElement("a");a.className="acao wa";a.href="https://wa.me/"+num;a.target="_blank";a.rel="noopener";a.textContent="💬 Conversa";td7.appendChild(a);
     if((r.arquivos||0)>0){const d=document.createElement("button");d.type="button";d.className="acao docs";d.textContent="📎 Documentos ("+r.arquivos+")";d.onclick=()=>abrirDocs(r.telefone,r.beneficiario||r.nome);td7.appendChild(d);}else{const s=document.createElement("span");s.className="off";s.textContent="sem docs";td7.appendChild(s);}
+    const pb=document.createElement("button");pb.type="button";pb.className="acao "+(r.bot_pausado?"reativar":"pausar");pb.textContent=r.bot_pausado?"▶️ Reativar bot":"⏸ Pausar bot";pb.onclick=()=>marcarPausa(r,!r.bot_pausado);td7.appendChild(pb);
     tr.appendChild(td7);
     tb.appendChild(tr);
   });
@@ -185,6 +189,14 @@ async function baixarZip(){
 }
 function fecharModal(ev,force){if(force||ev.target.id==="modal"){document.getElementById("modal").style.display="none";}}
 document.addEventListener("keydown",e=>{if(e.key==="Escape")document.getElementById("modal").style.display="none";});
+
+async function marcarPausa(r,valor){
+  const prev=r.bot_pausado;r.bot_pausado=valor;render();
+  try{
+    const resp=await fetch(FN+"?pausar="+encodeURIComponent(r.id)+"&valor="+(valor?1:0),{method:"POST",headers:{"x-fila-senha":senha}});
+    if(!resp.ok)throw 0;
+  }catch(e){r.bot_pausado=prev;render();alert("Não consegui salvar. Tente de novo.");}
+}
 
 async function marcarRespondido(r,valor){
   const prev=r.respondido;r.respondido=valor;render();
