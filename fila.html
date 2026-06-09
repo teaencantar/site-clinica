@@ -13,6 +13,8 @@ body{font-family:system-ui,Arial,sans-serif;background:#f6f1fb;color:#2a1330;mar
 h1{color:var(--rox);font-size:20px;margin:0 0 4px}
 .sub{color:#7a6a86;font-size:13px;margin-bottom:14px}
 #hdr{position:sticky;top:0;z-index:20;background:#f6f1fb;padding:14px 16px 8px;margin:-16px -16px 10px;box-shadow:0 6px 10px -8px rgba(112,56,112,.35)}
+#alerta{display:none;background:#fee2e2;color:#991b1b;border:1px solid #fca5a5;border-radius:10px;padding:10px 12px;margin-bottom:10px;font-size:14px}
+#alerta a{color:#991b1b}
 .bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:4px}
 #busca{flex:1;min-width:180px;padding:10px 12px;border:1px solid #d9c8ec;border-radius:10px;font-size:15px}
 .chip{border:1px solid #d9c8ec;background:#fff;border-radius:999px;padding:6px 12px;font-size:13px;cursor:pointer;white-space:nowrap}
@@ -65,6 +67,7 @@ tr.feito td:not(:first-child){opacity:.45}
 
 <div id="app">
   <div id="hdr">
+    <div id="alerta"></div>
     <h1>Fila de atendimento &mdash; TEA Encantar</h1>
     <div class="sub" id="resumo"></div>
     <div class="bar">
@@ -201,7 +204,21 @@ async function carregar(){
     document.getElementById("login").style.display="none";
     document.getElementById("app").style.display="block";
     render();
+    checarStatus();
   }catch(e){/* offline: mantem ultima tela */}
+}
+
+async function checarStatus(){
+  try{
+    const r=await fetch(FN+"?status=1",{headers:{"x-fila-senha":senha},cache:"no-store"});
+    if(!r.ok)return;
+    const s=await r.json();
+    const el=document.getElementById("alerta");
+    if(s&&s.credito==="fail"){
+      el.style.display="block";
+      el.innerHTML="⚠️ <b>O robô está fora do ar:</b> o crédito da IA (Anthropic) acabou. Adicione créditos em <a href=\"https://platform.claude.com\" target=\"_blank\" rel=\"noopener\">platform.claude.com</a> para reativar."+(s.desde?(" <span style=\"opacity:.8\">(desde "+fmtData(s.desde)+")</span>"):"");
+    }else{el.style.display="none";}
+  }catch(e){}
 }
 
 function mostrarLogin(erro){
