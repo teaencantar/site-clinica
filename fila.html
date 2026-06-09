@@ -21,10 +21,10 @@ th,td{text-align:left;padding:10px 12px;font-size:14px;border-bottom:1px solid #
 th{background:#faf7fd;color:#5a4866;font-size:12px;text-transform:uppercase;letter-spacing:.03em}
 tr.atencao td{background:#fff8f3}
 .badge{display:inline-block;padding:3px 9px;border-radius:999px;font-size:12px;font-weight:600}
-.acao{display:inline-block;text-decoration:none;padding:5px 9px;border-radius:8px;font-size:13px;margin-right:6px;white-space:nowrap}
+.acao{display:inline-block;text-decoration:none;padding:5px 9px;border-radius:8px;font-size:13px;margin-right:6px;white-space:nowrap;border:none;font-family:inherit;cursor:pointer}
 .wa{background:#dcfce7;color:#166534}
-.dr{background:#e0edff;color:#1e40af}
-.off{color:#bbb}
+.docs{background:#ede9fe;color:#5b21b6}
+.off{color:#bbb;font-size:13px}
 .vazio{padding:30px;text-align:center;color:#999}
 .foot{margin-top:10px;color:#9a8aa6;font-size:12px}
 /* login */
@@ -35,6 +35,17 @@ tr.atencao td{background:#fff8f3}
 .card button{width:100%;background:var(--rox);color:#fff;border:none;border-radius:10px;padding:13px;font-size:16px;font-weight:700;cursor:pointer}
 .card .erro{color:#b91c1c;font-size:13px;margin-bottom:10px}
 #app{display:none}
+/* modal documentos */
+#modal{display:none;position:fixed;inset:0;background:rgba(40,20,48,.55);align-items:center;justify-content:center;padding:16px;z-index:50}
+.modalbox{background:#fff;max-width:780px;width:100%;max-height:86vh;overflow:auto;border-radius:14px;padding:18px}
+.modalhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.modalhead b{color:var(--rox);font-size:16px}
+.modalhead button{background:none;border:none;font-size:26px;line-height:1;color:#888;cursor:pointer}
+.docgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.doccard{display:block;text-decoration:none;color:#2a1330;border:1px solid #eadff5;border-radius:10px;overflow:hidden;background:#faf7fd}
+.doccard img{width:100%;height:130px;object-fit:cover;display:block;background:#eee}
+.docicon{height:130px;display:flex;align-items:center;justify-content:center;font-size:42px;background:#f1eafb}
+.doccap{padding:7px 9px;font-size:12px;color:#5a4866}
 @media(max-width:640px){td .pl,th.pl{display:none}}
 </style>
 </head>
@@ -65,6 +76,13 @@ tr.atencao td{background:#fff8f3}
   <div class="foot" id="foot"></div>
 </div>
 
+<div id="modal" onclick="fecharModal(event)">
+  <div class="modalbox">
+    <div class="modalhead"><b id="modaltit"></b><button type="button" onclick="fecharModal(event,true)">&times;</button></div>
+    <div id="modalbody"></div>
+  </div>
+</div>
+
 <script>
 const FN = "https://nnbspcykhvcxpdywpbtb.supabase.co/functions/v1/fila";
 let DADOS = [];
@@ -93,11 +111,11 @@ function render(){
     const td2=document.createElement("td");const nome=document.createElement("div");nome.textContent=r.nome||"—";td2.appendChild(nome);if(r.beneficiario){const b=document.createElement("div");b.style.fontSize="12px";b.style.color="#7a6a86";b.textContent="paciente: "+r.beneficiario;td2.appendChild(b);}tr.appendChild(td2);
     const td3=document.createElement("td");td3.className="pl";td3.textContent=r.plano||"—";tr.appendChild(td3);
     const td4=document.createElement("td");td4.appendChild(badge(r.estado));tr.appendChild(td4);
-    const td5=document.createElement("td");td5.textContent=r.docs||0;tr.appendChild(td5);
+    const td5=document.createElement("td");td5.textContent=r.arquivos||0;tr.appendChild(td5);
     const td6=document.createElement("td");td6.className="pl";td6.textContent=fmtData(r.ultima);tr.appendChild(td6);
     const td7=document.createElement("td");const num=digits(r.telefone);
     const a=document.createElement("a");a.className="acao wa";a.href="https://wa.me/"+num;a.target="_blank";a.rel="noopener";a.textContent="💬 Conversa";td7.appendChild(a);
-    if(r.drive){const d=document.createElement("a");d.className="acao dr";d.href="https://drive.google.com/drive/folders/"+r.drive;d.target="_blank";d.rel="noopener";d.textContent="📁 Documentos";td7.appendChild(d);}else{const s=document.createElement("span");s.className="acao off";s.textContent="sem docs";td7.appendChild(s);}
+    if((r.arquivos||0)>0){const d=document.createElement("button");d.type="button";d.className="acao docs";d.textContent="📎 Documentos ("+r.arquivos+")";d.onclick=()=>abrirDocs(r.telefone,r.beneficiario||r.nome);td7.appendChild(d);}else{const s=document.createElement("span");s.className="off";s.textContent="sem docs";td7.appendChild(s);}
     tr.appendChild(td7);
     tb.appendChild(tr);
   });
@@ -106,6 +124,31 @@ function render(){
   document.getElementById("resumo").textContent=DADOS.length+" conversas · "+at+" precisando de atenção (humano / aguardando validação)";
   document.getElementById("foot").textContent="Mostrando "+vis+" · atualizado "+new Date().toLocaleTimeString("pt-BR",{timeZone:"America/Sao_Paulo"})+" · atualiza sozinho a cada 30s";
 }
+
+async function abrirDocs(tel,nome){
+  const m=document.getElementById("modal");m.style.display="flex";
+  document.getElementById("modaltit").textContent="Documentos · "+(nome||tel);
+  const body=document.getElementById("modalbody");body.textContent="Carregando...";
+  try{
+    const r=await fetch(FN+"?docs="+encodeURIComponent(tel),{headers:{"x-fila-senha":senha},cache:"no-store"});
+    if(!r.ok){body.textContent="Erro ao carregar os documentos.";return;}
+    const docs=await r.json();
+    if(!Array.isArray(docs)||!docs.length){body.textContent="Nenhum documento encontrado para este número.";return;}
+    body.innerHTML="";
+    const grid=document.createElement("div");grid.className="docgrid";
+    docs.forEach((d,i)=>{
+      const card=document.createElement("a");card.className="doccard";card.href=d.url||"#";card.target="_blank";card.rel="noopener";
+      const mime=(d.mime||"").toLowerCase();
+      if(mime.indexOf("image")>=0&&d.url){const img=document.createElement("img");img.src=d.url;img.loading="lazy";img.alt="documento "+(i+1);card.appendChild(img);}
+      else{const ic=document.createElement("div");ic.className="docicon";ic.textContent="📄";card.appendChild(ic);}
+      const cap=document.createElement("div");cap.className="doccap";cap.textContent=(mime.indexOf("pdf")>=0?"PDF":(mime.indexOf("image")>=0?"Foto":"Arquivo"))+" "+(i+1)+" · "+fmtData(d.criado);card.appendChild(cap);
+      grid.appendChild(card);
+    });
+    body.appendChild(grid);
+  }catch(e){body.textContent="Erro de conexão.";}
+}
+function fecharModal(ev,force){if(force||ev.target.id==="modal"){document.getElementById("modal").style.display="none";}}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")document.getElementById("modal").style.display="none";});
 
 async function carregar(){
   if(!senha){mostrarLogin();return;}
