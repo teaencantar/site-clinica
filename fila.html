@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <title>Fila de atendimento — TEA Encantar</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <style>
 :root{--rox:#703870}
 *{box-sizing:border-box}
@@ -78,7 +79,7 @@ tr.atencao td{background:#fff8f3}
 
 <div id="modal" onclick="fecharModal(event)">
   <div class="modalbox">
-    <div class="modalhead"><b id="modaltit"></b><button type="button" onclick="fecharModal(event,true)">&times;</button></div>
+    <div class="modalhead"><b id="modaltit"></b><div><button type="button" id="btnzip" class="acao docs" style="margin-right:12px" onclick="baixarZip()">&#11015;&#65039; Baixar todos (ZIP)</button><button type="button" onclick="fecharModal(event,true)" style="vertical-align:middle">&times;</button></div></div>
     <div id="modalbody"></div>
   </div>
 </div>
@@ -88,6 +89,8 @@ const FN = "https://nnbspcykhvcxpdywpbtb.supabase.co/functions/v1/fila";
 let DADOS = [];
 let filtro = "todos";
 let senha = localStorage.getItem("fila_senha") || "";
+let docsAtuais = [];
+let docsLabel = "";
 const CORES = {novo:["#e5e7eb","#374151"],triagem:["#dbeafe","#1e40af"],coletando:["#fef3c7","#92400e"],aguardando_validacao:["#ffedd5","#9a3412"],humano:["#fee2e2","#991b1b"],existente_silenciado:["#f3f4f6","#6b7280"],finalizado:["#dcfce7","#166534"]};
 const ATENCAO = ["humano","aguardando_validacao"];
 
@@ -133,6 +136,7 @@ async function abrirDocs(tel,nome){
     const r=await fetch(FN+"?docs="+encodeURIComponent(tel),{headers:{"x-fila-senha":senha},cache:"no-store"});
     if(!r.ok){body.textContent="Erro ao carregar os documentos.";return;}
     const docs=await r.json();
+    docsAtuais=Array.isArray(docs)?docs:[];docsLabel=(nome||tel);
     if(!Array.isArray(docs)||!docs.length){body.textContent="Nenhum documento encontrado para este número.";return;}
     body.innerHTML="";
     const grid=document.createElement("div");grid.className="docgrid";
@@ -146,6 +150,32 @@ async function abrirDocs(tel,nome){
     });
     body.appendChild(grid);
   }catch(e){body.textContent="Erro de conexão.";}
+}
+async function baixarZip(){
+  if(!docsAtuais.length){return;}
+  if(typeof JSZip==="undefined"){alert("Biblioteca de ZIP não carregou. Tente recarregar a página.");return;}
+  const btn=document.getElementById("btnzip");const txt=btn.innerHTML;btn.disabled=true;
+  try{
+    const zip=new JSZip();let n=0;
+    for(let i=0;i<docsAtuais.length;i++){
+      const d=docsAtuais[i];if(!d.url)continue;
+      btn.innerHTML="Baixando "+(i+1)+"/"+docsAtuais.length+"...";
+      const resp=await fetch(d.url);if(!resp.ok)continue;
+      const blob=await resp.blob();
+      const ext=(d.nome&&d.nome.indexOf(".")>=0)?d.nome.split(".").pop():"bin";
+      const mime=(d.mime||"").toLowerCase();
+      const nm=String(i+1).padStart(2,"0")+"-"+(mime.indexOf("pdf")>=0?"documento":"foto")+"."+ext;
+      zip.file(nm,blob);n++;
+    }
+    if(!n){alert("Nenhum arquivo pôde ser baixado.");return;}
+    btn.innerHTML="Gerando ZIP...";
+    const out=await zip.generateAsync({type:"blob"});
+    const a=document.createElement("a");a.href=URL.createObjectURL(out);
+    a.download="documentos-"+(docsLabel||"paciente").replace(/[^a-z0-9]+/gi,"_").slice(0,40)+".zip";
+    document.body.appendChild(a);a.click();a.remove();
+    setTimeout(()=>URL.revokeObjectURL(a.href),5000);
+  }catch(e){alert("Erro ao gerar o ZIP.");}
+  finally{btn.disabled=false;btn.innerHTML=txt;}
 }
 function fecharModal(ev,force){if(force||ev.target.id==="modal"){document.getElementById("modal").style.display="none";}}
 document.addEventListener("keydown",e=>{if(e.key==="Escape")document.getElementById("modal").style.display="none";});
